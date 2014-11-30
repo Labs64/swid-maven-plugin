@@ -4,4 +4,14 @@ Generate Software Identification (SWID) Tags according to [ISO/IEC 19770-2:2009]
 
 ### Quick Start
 
-TODO
+The recommended way to get started using `swid-maven-plugin` in your project is with a plugin management system – the Maven snippet below can be copied and pasted into your build.
+
+```
+<plugins>
+  <plugin>
+    <groupId>com.labs64.utils</groupId>
+    <artifactId>swid-maven-plugin</artifactId>
+    <version>0.1.0</version>
+  </plugin>
+</plugins>
+```
