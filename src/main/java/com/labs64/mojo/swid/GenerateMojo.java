@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.labs64.mojo;
+package com.labs64.mojo.swid;
 
 import java.io.File;
 
@@ -27,11 +27,12 @@ import org.apache.maven.plugins.annotations.Parameter;
  * Goal which generates SWID Tag for a given POM.
  */
 @Mojo(name = "generate", defaultPhase = LifecyclePhase.PROCESS_RESOURCES)
-public class SwidGeneratorMojo extends AbstractMojo {
+public class GenerateMojo extends AbstractMojo {
+
     /**
-     * Location of the SWID tags.
+     * Location of the generated SWID tags.
      */
-    @Parameter(defaultValue = "${project.build.directory}", property = "outputDir", required = true)
+    @Parameter(property = "outputDir", required = true, defaultValue = "${project.build.directory}")
     private File outputDirectory;
 
     public void execute() throws MojoExecutionException {
