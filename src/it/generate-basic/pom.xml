@@ -3,10 +3,17 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.labs64.mojo.it</groupId>
-    <artifactId>simple-it</artifactId>
+    <groupId>@project.groupId@.it</groupId>
+    <artifactId>@project.artifactId@-it</artifactId>
     <version>@project.version@</version>
-    <name>IT :: Generate MOJO</name>
+    <name>IT :: MOJO :: Generate</name>
+
+    <url>http://www.labs64.com</url>
+
+    <organization>
+        <name>Labs64 GmbH</name>
+        <url>http://www.labs64.com</url>
+    </organization>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -20,7 +27,7 @@
                 <version>@project.version@</version>
                 <executions>
                     <execution>
-                        <id>generate-swid</id>
+                        <id>generate</id>
                         <phase>process-resources</phase>
                         <goals>
                             <goal>generate</goal>

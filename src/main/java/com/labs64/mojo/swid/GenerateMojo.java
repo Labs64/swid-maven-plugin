@@ -34,24 +34,30 @@ import com.labs64.utils.swid.support.SwidUtils;
 public class GenerateMojo extends AbstractMojo {
 
     /**
+     * Encoding for the generated .swidtag files.
+     */
+    @Parameter(property = "encoding", required = false, defaultValue = "${project.build.sourceEncoding}")
+    private String encoding;
+
+    /**
      * Location of the generated SWID tags.
      */
-    @Parameter(property = "outputDir", required = true, defaultValue = "${project.build.directory}")
+    @Parameter(property = "outputDirectory", required = true, defaultValue = "${project.build.directory}")
     private File outputDirectory;
 
     public void execute() throws MojoExecutionException {
         getLog().info("Generate SWID Tag...");
 
-        File f = outputDirectory;
+        File dir = outputDirectory;
 
-        if (!f.exists()) {
-            f.mkdirs();
+        if (!dir.exists()) {
+            dir.mkdirs();
         }
 
         final String regId = SwidUtils.generateRegId("2010-04", "com.labs64");
         final String fileName = SwidUtils.generateSwidFileName(regId, "NetLicensing", "NLIC-210");
 
-        File touch = new File(f, fileName);
+        File touch = new File(dir, fileName);
 
         FileWriter w = null;
         try {
