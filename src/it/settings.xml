@@ -52,4 +52,7 @@ under the License.
             </pluginRepositories>
         </profile>
     </profiles>
+    <pluginGroups>
+        <pluginGroup>com.labs64.mojo</pluginGroup>
+    </pluginGroups>
 </settings>

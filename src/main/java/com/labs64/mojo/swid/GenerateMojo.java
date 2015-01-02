@@ -16,12 +16,16 @@
 package com.labs64.mojo.swid;
 
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugins.annotations.LifecyclePhase;
 import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
+
+import com.labs64.utils.swid.support.SwidUtils;
 
 /**
  * Goal which generates SWID Tag for a given POM.
@@ -37,6 +41,33 @@ public class GenerateMojo extends AbstractMojo {
 
     public void execute() throws MojoExecutionException {
         getLog().info("Generate SWID Tag...");
+
+        File f = outputDirectory;
+
+        if (!f.exists()) {
+            f.mkdirs();
+        }
+
+        final String regId = SwidUtils.generateRegId("2010-04", "com.labs64");
+        final String fileName = SwidUtils.generateSwidFileName(regId, "NetLicensing", "NLIC-210");
+
+        File touch = new File(f, fileName);
+
+        FileWriter w = null;
+        try {
+            w = new FileWriter(touch);
+            w.write(regId);
+        } catch (IOException e) {
+            throw new MojoExecutionException("Error creating file " + touch, e);
+        } finally {
+            if (w != null) {
+                try {
+                    w.close();
+                } catch (IOException e) {
+                    // ignore
+                }
+            }
+        }
     }
 
 }
