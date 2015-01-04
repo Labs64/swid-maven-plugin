@@ -1,0 +1,124 @@
+~~~
+~~ #%L
+~~ License Maven Plugin
+~~ %%
+~~ Copyright (C) 2008 - 2011 CodeLutin, Codehaus, Tony Chemit
+~~ %%
+~~ This program is free software: you can redistribute it and/or modify
+~~ it under the terms of the GNU Lesser General Public License as
+~~ published by the Free Software Foundation, either version 3 of the
+~~ License, or (at your option) any later version.
+~~
+~~ This program is distributed in the hope that it will be useful,
+~~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+~~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+~~ GNU General Lesser Public License for more details.
+~~
+~~ You should have received a copy of the GNU General Lesser Public
+~~ License along with this program.  If not, see
+~~ <http://www.gnu.org/licenses/lgpl-3.0.html>.
+~~ #L%
+~~~
+
+ ------
+ Download Licenses Examples
+ ------
+ ------
+ 2010-10-16
+ ------
+
+Download Licenses Examples
+
+  This page provides examples of how to use the <<<download-licenses>>> goal.
+  By default, the <<<{{{../download-licenses-mojo.html}download-licenses}}>>> goal will attempt to
+  resolve the license of each project dependency.  These files will be downloaded to a local directory
+  to be included in the final packaging of the project if desired.  The licenses are downloaded
+  based on the url field of the dependency POM.
+  
+  After downloading the license files, the plugin will create a summary file in XML format which describes
+  the license(s) associated with each dependency.  Note that subsequent runs of the plugin will attempt
+  to use the existing summary file if found instead of re-downloading the licenses every build.
+  If the license summary file is found, only the licenses of new dependencies not in the file will
+  be downloaded.
+
+* Basic Example
+
+  This example shows how to configure the <<<download-licenses>>> goal for basic usage.
+  
+-------------------
+<project>
+  ...
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>license-maven-plugin</artifactId>
+        <version>${project.version}</version>
+        <executions>
+          <execution>
+            <id>download-licenses</id>
+            <goals>
+              <goal>download-licenses</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+    ...
+  </build>
+  ...
+</project>
+-------------------
+
+  Next run your build:
+  
++-----+
+mvn package
++-----+
+    
+  For the <<<download-licenses>>> goal, licenses will by default be downloaded into the directory 
+  <<<target/generated-resources/licenses>>>.  This can be configured using the <<<licensesOutputDirectory>>> parameter.
+  
+* Manual License Configuration
+
+  By default the plugin will look at the POM of each dependency for license information.  However,
+  not all POMs have been configured with the correct license information.  In these cases, 
+  the required license information can be configured manually.  By default, the plugin will look
+  for a file called <<src/license/licenses.xml>>.  This file contains manually configured license information
+  which will be merged with information from the dependency POMs to create the final license report.  
+  The location of this file can be configured using the <<licensesConfigFile>> parameter
+  The following is an example license config file.
+  
+-------------------
+<?xml version="1.0"?>
+
+<licenseSummary xmlns="http://mojo.codehaus.org/"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://mojo.codehaus.org/ licenses.xsd">
+  <dependencies>
+    <dependency>
+      <groupId>com.wutka</groupId>
+      <artifactId>dtdparser</artifactId>
+      <licenses>
+        <license>
+          <name>GNU Lesser General Public License</name>
+          <url>http://www.gnu.org/licenses/lgpl.txt</url>
+          <distribution>repo</distribution>
+        </license>
+      </licenses>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>jcl-over-slf4j</artifactId>
+      <licenses>
+        <license>
+          <name>MIT License</name>
+          <url>http://www.opensource.org/licenses/mit-license.php</url>
+        </license>
+      </licenses>
+    </dependency>
+  </dependencies>
+</licenseSummary>
+-------------------
+
+  The generated license report follows the same XML format as the manual license config file.

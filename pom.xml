@@ -24,6 +24,16 @@
         </license>
     </licenses>
 
+    <mailingLists>
+        <mailingList>
+            <name>Maven Plugin :: SWID Tags Generator</name>
+            <subscribe>https://groups.google.com/group/swid-maven-plugin</subscribe>
+            <unsubscribe>https://groups.google.com/group/swid-maven-plugin</unsubscribe>
+            <post>swid-maven-plugin@googlegroups.com</post>
+            <archive>https://groups.google.com/group/swid-maven-plugin</archive>
+        </mailingList>
+    </mailingLists>
+
     <scm>
         <url>https://github.com/Labs64/swid-maven-plugin</url>
         <connection>scm:git:git@github.com:Labs64/swid-maven-plugin.git</connection>
@@ -82,6 +92,7 @@
 
         <!-- plugin.version>0.0.0</plugin.version -->
         <maven-plugin-plugin.version>3.3</maven-plugin-plugin.version>
+        <plexus-component-javadoc.version>1.6</plexus-component-javadoc.version>
         <maven-invoker-plugin.version>1.9</maven-invoker-plugin.version>
         <maven-enforcer-plugin.version>1.3.1</maven-enforcer-plugin.version>
         <maven-compiler-plugin.version>3.2</maven-compiler-plugin.version>
@@ -89,13 +100,14 @@
         <nexus-staging-maven-plugin.version>1.6.4</nexus-staging-maven-plugin.version>
         <maven-source-plugin.version>2.4</maven-source-plugin.version>
         <maven-javadoc-plugin.version>2.10.1</maven-javadoc-plugin.version>
+        <maven-jxr-plugin.version>2.5</maven-jxr-plugin.version>
         <maven-dependency-plugin.version>2.9</maven-dependency-plugin.version>
         <maven-gpg-plugin.version>1.5</maven-gpg-plugin.version>
         <maven-jaxb2-plugin.version>0.12.3</maven-jaxb2-plugin.version>
         <build-helper-maven-plugin.version>1.9.1</build-helper-maven-plugin.version>
         <maven-resources-plugin.version>2.7</maven-resources-plugin.version>
         <maven-jar-plugin.version>2.5</maven-jar-plugin.version>
-        <maven-shade-plugin.version>2.3</maven-shade-plugin.version>
+        <maven-docck-plugin.version>1.0</maven-docck-plugin.version>
     </properties>
 
     <prerequisites>
@@ -225,7 +237,7 @@
                 <version>${maven-release-plugin.version}</version>
                 <configuration>
                     <useReleaseProfile>false</useReleaseProfile>
-                    <releaseProfiles>release</releaseProfiles>
+                    <releaseProfiles>release,run-its,reporting</releaseProfiles>
                     <goals>deploy</goals>
                 </configuration>
             </plugin>
@@ -259,11 +271,6 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
                 <version>${maven-jar-plugin.version}</version>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-shade-plugin</artifactId>
-                <version>${maven-shade-plugin.version}</version>
             </plugin>
         </plugins>
     </build>
@@ -300,6 +307,7 @@
                             <pomIncludes>
                                 <pomInclude>*/pom.xml</pomInclude>
                             </pomIncludes>
+                            <preBuildHookScript>setup</preBuildHookScript>
                             <postBuildHookScript>verify</postBuildHookScript>
                             <localRepositoryPath>${project.build.directory}/local-repo</localRepositoryPath>
                             <settingsFile>src/it/settings.xml</settingsFile>
@@ -315,6 +323,98 @@
                                     <goal>install</goal>
                                     <goal>integration-test</goal>
                                     <goal>verify</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>reporting</id>
+            <activation>
+                <property>
+                    <name>skipReports</name>
+                    <value>!true</value>
+                </property>
+            </activation>
+            <reporting>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-invoker-plugin</artifactId>
+                        <version>${maven-invoker-plugin.version}</version>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-javadoc-plugin</artifactId>
+                        <version>${maven-javadoc-plugin.version}</version>
+                        <configuration>
+                            <quiet>true</quiet>
+                            <tagletArtifacts>
+                                <tagletArtifact>
+                                    <groupId>org.apache.maven.plugin-tools</groupId>
+                                    <artifactId>maven-plugin-tools-javadoc</artifactId>
+                                    <version>${maven-plugin-plugin.version}</version>
+                                </tagletArtifact>
+                                <tagletArtifact>
+                                    <groupId>org.codehaus.plexus</groupId>
+                                    <artifactId>plexus-component-javadoc</artifactId>
+                                    <version>${plexus-component-javadoc.version}</version>
+                                </tagletArtifact>
+                            </tagletArtifacts>
+                        </configuration>
+                        <reportSets>
+                            <reportSet>
+                                <reports>
+                                    <report>javadoc</report>
+                                    <report>test-javadoc</report>
+                                </reports>
+                            </reportSet>
+                        </reportSets>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-jxr-plugin</artifactId>
+                        <version>${maven-jxr-plugin.version}</version>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-plugin-plugin</artifactId>
+                        <version>${maven-plugin-plugin.version}</version>
+                        <configuration>
+                            <requirements>
+                                <!--
+                                NOTE: Maven 2.x does not interpolate properties of the form project.*|pom.* so the Maven Plugin Plugin
+                                gets garbage when manually examining the config of the Maven Compiler Plugin.
+                                -->
+                                <jdk>${mojo.java.target}</jdk>
+                            </requirements>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </reporting>
+        </profile>
+        <profile>
+            <id>quality-checks</id>
+            <activation>
+                <property>
+                    <name>skipChecks</name>
+                    <value>!true</value>
+                </property>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-docck-plugin</artifactId>
+                        <version>${maven-docck-plugin.version}</version>
+                        <executions>
+                            <execution>
+                                <id>docck-check</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>check</goal>
                                 </goals>
                             </execution>
                         </executions>
