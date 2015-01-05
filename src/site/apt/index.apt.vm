@@ -25,7 +25,7 @@
  ~~ http://maven.apache.org/doxia/references/apt-format.html
 
 
-Introduction
+${project.description}
 
   This plugin manages the license of a maven project and its dependencies
   (update file headers, download dependencies licenses, check thirdparty

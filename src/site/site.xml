@@ -19,8 +19,10 @@ specific language governing permissions and limitations
 under the License.
 -->
 
-<project name="swid-maven-plugin">
-    <publishDate format="dd MMM yyyy" position="left" />
+<project xmlns="http://maven.apache.org/DECORATION/1.1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/DECORATION/1.1.0 http://maven.apache.org/xsd/decoration-1.1.0.xsd"
+         name="swid-maven-plugin">
+    <publishDate format="dd MMM yyyy" position="right" />
     <skin>
         <groupId>org.apache.maven.skins</groupId>
         <artifactId>maven-fluido-skin</artifactId>
@@ -28,6 +30,8 @@ under the License.
     </skin>
     <custom>
         <fluidoSkin>
+            <profile>pre-release</profile>
+
             <topBarEnabled>false</topBarEnabled>
             <sideBarEnabled>true</sideBarEnabled>
             <breadcrumbDivider>»</breadcrumbDivider>
@@ -45,12 +49,16 @@ under the License.
             </ohloh>
         </fluidoSkin>
     </custom>
+
     <bannerLeft>
-        <name>${project.description}</name>
+        <name>${project.name}</name>
+        <src>/images/Labs64_LogoS.png</src>
+        <href>http://www.labs64.com</href>
     </bannerLeft>
     <bannerRight>
         <src></src>
     </bannerRight>
+
     <body>
         <breadcrumbs>
             <item name="SWID Tags Generator for Maven" href="https://github.com/Labs64/swid-maven-plugin" />
