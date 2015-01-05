@@ -20,31 +20,37 @@ under the License.
 -->
 
 <project name="swid-maven-plugin">
+    <publishDate format="dd MMM yyyy" position="left" />
     <skin>
         <groupId>org.apache.maven.skins</groupId>
         <artifactId>maven-fluido-skin</artifactId>
         <version>1.3.1</version>
     </skin>
-
     <custom>
         <fluidoSkin>
+            <topBarEnabled>false</topBarEnabled>
+            <sideBarEnabled>true</sideBarEnabled>
+            <breadcrumbDivider>»</breadcrumbDivider>
             <gitHub>
                 <projectId>Labs64/swid-maven-plugin</projectId>
                 <ribbonOrientation>right</ribbonOrientation>
+                <ribbonColor>#973c05</ribbonColor>
             </gitHub>
-            <topBarEnabled>true</topBarEnabled>
-            <topBarIcon>
-                <name>Labs64 :: Maven Plugin :: SWID Tags Generator</name>
-                <alt>Labs64 :: Maven Plugin :: SWID Tags Generator</alt>
-                <src>/images/Labs64_LogoS.png</src>
-                <href>/index.html</href>
-            </topBarIcon>
+            <googleSearch>
+                <sitesearch />
+            </googleSearch>
+            <ohloh>
+                <projectId>swid-maven-plugin</projectId>
+                <widget>thin-badge</widget>
+            </ohloh>
         </fluidoSkin>
     </custom>
-
-    <bannerLeft />
-    <bannerRight />
-
+    <bannerLeft>
+        <name>${project.description}</name>
+    </bannerLeft>
+    <bannerRight>
+        <src></src>
+    </bannerRight>
     <body>
         <breadcrumbs>
             <item name="SWID Tags Generator for Maven" href="https://github.com/Labs64/swid-maven-plugin" />
@@ -59,11 +65,13 @@ under the License.
             <item name="Generate SWID Tag" href="examples/generate.html" />
         </menu>
         <menu name="Developer Info">
-            <item name="Bug Reports" href="https://github.com/Labs64/swid-maven-plugin/issues" />
+            <item name="Releases" href="https://github.com/Labs64/swid-maven-plugin/releases" />
+            <item name="Issues" href="https://github.com/Labs64/swid-maven-plugin/issues" />
             <item name="Forum" href="https://groups.google.com/group/swid-maven-plugin" />
-            <item name="APIDocs" href="apidocs/index.html" />
-            <item name="SWID Tags Generator" href="https://github.com/Labs64/swid-generator" />
         </menu>
         <menu ref="reports" />
+        <menu name="External Links">
+            <item name="SWID Tags Generator (library)" href="https://github.com/Labs64/swid-generator/" />
+        </menu>
     </body>
 </project>
