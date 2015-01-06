@@ -17,6 +17,11 @@ package com.labs64.mojo.swid;
 
 import java.io.File;
 
+import org.apache.commons.lang3.StringUtils;
+import org.apache.maven.artifact.Artifact;
+import org.apache.maven.artifact.ArtifactUtils;
+import org.apache.maven.artifact.versioning.ArtifactVersion;
+import org.apache.maven.artifact.versioning.DefaultArtifactVersion;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugins.annotations.Component;
@@ -51,12 +56,17 @@ public class GenerateMojo extends AbstractMojo {
      */
     @Parameter(property = "swid.encoding", required = false, defaultValue = "${project.build.sourceEncoding}")
     private String encoding;
-
     /**
      * Encoding for the generated .swidtag files.
      */
     @Parameter(property = "swid.extension", required = false, defaultValue = "swidtag")
     private String extension;
+
+    /**
+     * Specifies if an entitlement is required to reconcile this product.
+     */
+    @Parameter(property = "swid.entitlement_required", required = false, defaultValue = "false")
+    private Boolean entitlement_required;
 
     public void execute() throws MojoExecutionException {
         getLog().debug("Generate SWID Tag...");
@@ -67,18 +77,30 @@ public class GenerateMojo extends AbstractMojo {
         }
 
         final String regId = SwidUtils.generateRegId("2010-04", "com.labs64");
+        // Parse a version String and add the components to a properties object.
+        String projectVersion = project.getVersion();
+        if (ArtifactUtils.isSnapshot(projectVersion)) {
+            projectVersion = StringUtils.substring(projectVersion, 0, projectVersion.length()
+                    - Artifact.SNAPSHOT_VERSION.length() - 1);
+        }
+        ArtifactVersion artifactVersion = new DefaultArtifactVersion(projectVersion);
 
         final String fileName = SwidUtils.generateSwidFileName(regId,
                 project.getArtifactId(),
-                project.getVersion(),
+                projectVersion,
                 extension);
         File touch = new File(dir, fileName);
 
         // prepare SWID Tag processor
         SwidProcessor processor = new DefaultSwidProcessor();
-        ((DefaultSwidProcessor) processor).setEntitlementRequiredIndicator(true)
+        ((DefaultSwidProcessor) processor).setEntitlementRequiredIndicator(entitlement_required)
                 .setProductTitle(project.getName())
-                .setProductVersion(project.getVersion(), 2, 1, 0, 0)
+                .setProductVersion(projectVersion,
+                        artifactVersion.getMajorVersion(),
+                        artifactVersion.getMinorVersion(),
+                        artifactVersion.getIncrementalVersion(),
+                        artifactVersion.getBuildNumber())
+                // TODO: ...
                 .setSoftwareCreator("Labs64", regId)
                 .setSoftwareLicensor("Labs64", regId)
                 .setSoftwareId("NLIC", regId)
