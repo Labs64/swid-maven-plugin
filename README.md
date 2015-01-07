@@ -1,7 +1,7 @@
 # Maven Plugin :: SoftWare IDentification (SWID) Tags Generator
 
 [![Stories in Ready](https://badge.waffle.io/Labs64/swid-maven-plugin.svg?label=ready&title=Ready)](http://waffle.io/Labs64/swid-maven-plugin)
-[![Coverage Status](https://coveralls.io/repos/Labs64/swid-generator/badge.png)](https://coveralls.io/r/Labs64/swid-generator)
+[![Coverage Status](https://coveralls.io/repos/Labs64/swid-maven-plugin/badge.png)](https://coveralls.io/r/Labs64/swid-maven-plugin)
 [![Build Status](https://travis-ci.org/Labs64/swid-maven-plugin.svg)](https://travis-ci.org/Labs64/swid-maven-plugin)
 [![Dependency Status](https://www.versioneye.com/user/projects/54a1b8d614969a371200003d/badge.svg?style=flat)](https://www.versioneye.com/user/projects/54a1b8d614969a371200003d)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.labs64.mojo/swid-maven-plugin/badge.svg?style=flat)](https://maven-badges.herokuapp.com/maven-central/com.labs64.mojo/swid-maven-plugin)
