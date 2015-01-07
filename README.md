@@ -32,4 +32,4 @@ This library requires J2SE 1.6 or never. All dependencies are handled by Maven.
 
 ## Links
 - Plugin website: http://io.labs64.com/swid-maven-plugin/
-- SoftWare IDentification (SWID) Tags Generator (Java Library): https://github.com/Labs64/swid-generator/
+- [![Reference Status](https://www.versioneye.com/java/com.labs64.utils:swid-generator/reference_badge.svg?style=flat)](https://www.versioneye.com/java/com.labs64.utils:swid-generator/references) SoftWare IDentification (SWID) Tags Generator (Java Library): https://github.com/Labs64/swid-generator/
