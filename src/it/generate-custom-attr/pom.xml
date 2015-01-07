@@ -35,6 +35,22 @@
                         <configuration>
                             <extension>xml</extension>
                             <entitlement_required>true</entitlement_required>
+                            <software_creator>
+                                <name>Labs64</name>
+                                <regid>reg.2010-04.com.labs64</regid>
+                            </software_creator>
+                            <software_licensor>
+                                <name>Labs64</name>
+                                <regid>reg.2010-04.com.labs64</regid>
+                            </software_licensor>
+                            <software_id>
+                                <name>Labs64</name>
+                                <regid>reg.2010-04.com.labs64</regid>
+                            </software_id>
+                            <tag_creator>
+                                <name>Labs64</name>
+                                <regid>reg.2010-04.com.labs64</regid>
+                            </tag_creator>
                         </configuration>
                     </execution>
                 </executions>

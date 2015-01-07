@@ -54,12 +54,13 @@ public class GenerateMojo extends AbstractMojo {
     /**
      * Encoding for the generated .swidtag files.
      */
-    @Parameter(property = "swid.encoding", required = false, defaultValue = "${project.build.sourceEncoding}")
+    @Parameter(property = "swid.encoding", required = true, defaultValue = "${project.build.sourceEncoding}")
     private String encoding;
+
     /**
      * Encoding for the generated .swidtag files.
      */
-    @Parameter(property = "swid.extension", required = false, defaultValue = "swidtag")
+    @Parameter(property = "swid.extension", required = true, defaultValue = "swidtag")
     private String extension;
 
     /**
@@ -67,6 +68,30 @@ public class GenerateMojo extends AbstractMojo {
      */
     @Parameter(property = "swid.entitlement_required", required = false, defaultValue = "false")
     private Boolean entitlement_required;
+
+    /**
+     * Encoding for the generated .swidtag files.
+     */
+    @Parameter(property = "swid.software_creator", required = false, defaultValue = "")
+    private RegId software_creator;
+
+    /**
+     * Encoding for the generated .swidtag files.
+     */
+    @Parameter(property = "swid.software_licensor", required = false, defaultValue = "")
+    private RegId software_licensor;
+
+    /**
+     * Encoding for the generated .swidtag files.
+     */
+    @Parameter(property = "swid.software_id", required = false, defaultValue = "")
+    private RegId software_id;
+
+    /**
+     * Encoding for the generated .swidtag files.
+     */
+    @Parameter(property = "swid.tag_creator", required = false, defaultValue = "")
+    private RegId tag_creator;
 
     public void execute() throws MojoExecutionException {
         getLog().debug("Generate SWID Tag...");
@@ -100,11 +125,10 @@ public class GenerateMojo extends AbstractMojo {
                         artifactVersion.getMinorVersion(),
                         artifactVersion.getIncrementalVersion(),
                         artifactVersion.getBuildNumber())
-                // TODO: ...
-                .setSoftwareCreator("Labs64", regId)
-                .setSoftwareLicensor("Labs64", regId)
-                .setSoftwareId("NLIC", regId)
-                .setTagCreator("Labs64", regId);
+                .setSoftwareCreator(software_creator.getName(), software_creator.getRegid())
+                .setSoftwareLicensor(software_licensor.getName(), software_licensor.getRegid())
+                .setSoftwareId(software_id.getName(), software_id.getRegid())
+                .setTagCreator(tag_creator.getName(), tag_creator.getRegid());
 
         // create builder and pass processor as build param
         SwidBuilder builder = new SwidBuilder();

@@ -79,7 +79,8 @@ under the License.
         </menu>
         <menu ref="reports" />
         <menu name="External Links">
-            <item name="SWID Tags Generator (library)" href="https://github.com/Labs64/swid-generator/" />
+            <item name="SWID Tags Generator (Java Library)" href="https://github.com/Labs64/swid-generator/" />
+            <item name="Labs64 NetLicensing" href="http://www.labs64.com/netlicensing/" />
         </menu>
     </body>
 </project>
