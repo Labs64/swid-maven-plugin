@@ -6,3 +6,5 @@ jdk:
   - oraclejdk8
 script:
   - mvn clean verify
+after_success:
+  - coveralls
