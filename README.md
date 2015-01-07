@@ -31,5 +31,5 @@ Maven:
 This library requires J2SE 1.6 or never. All dependencies are handled by Maven.
 
 ## Links
-- SWID Tags Generator (library): https://github.com/Labs64/swid-generator/
 - Plugin website: http://io.labs64.com/swid-maven-plugin/
+- SoftWare IDentification (SWID) Tags Generator (Java Library): https://github.com/Labs64/swid-generator/
