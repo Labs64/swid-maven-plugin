@@ -9,7 +9,7 @@ Generate SoftWare IDentification (SWID) Tags according to [ISO/IEC 19770-2:2009]
 
 ## Quick Start
 
-The recommended way to get started using `swid-maven-plugin` in your project is with a plugin management system – the Maven snippet below can be copied and pasted into your build.
+The recommended way to get started using [`swid-maven-plugin`](https://maven-badges.herokuapp.com/maven-central/com.labs64.mojo/swid-maven-plugin) in your project is with a plugin management system – the Maven snippet below can be copied and pasted into your build.
 
 Maven:
 ```xml
