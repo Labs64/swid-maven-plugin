@@ -47,53 +47,72 @@ public class GenerateMojo extends AbstractMojo {
 
     /**
      * Location of the generated SWID tags.
+     * 
+     * @since 1.0.0
      */
     @Parameter(property = "swid.outputDirectory", required = true, defaultValue = "${project.build.directory}")
     private File outputDirectory;
 
     /**
-     * Encoding for the generated .swidtag files.
+     * Encoding for the generated SWID tags files.
+     * 
+     * @since 1.0.0
      */
-    @Parameter(property = "swid.encoding", required = true, defaultValue = "${project.build.sourceEncoding}")
+    @Parameter(property = "swid.encoding", required = false, defaultValue = "${project.build.sourceEncoding}")
     private String encoding;
+
     /**
-     * Encoding for the generated .swidtag files.
+     * Encoding for the generated SWID tags files.
+     * 
+     * @since 1.0.0
      */
-    @Parameter(property = "swid.extension", required = true, defaultValue = "swidtag")
+    @Parameter(property = "swid.extension", required = false, defaultValue = "swidtag")
     private String extension;
 
     /**
      * Specifies if an entitlement is required to reconcile this product.
+     * 
+     * @since 1.0.0
      */
     @Parameter(property = "swid.entitlement_required", required = false, defaultValue = "false")
     private Boolean entitlement_required;
 
     /**
      * TODO
+     * 
+     * @since 1.0.0
      */
-    @Parameter(property = "swid.product_title", required = true, defaultValue = "${project.name}")
+    @Parameter(property = "swid.product_title", required = false, defaultValue = "${project.name}")
     private String product_title;
 
     /**
      * TODO
+     * 
+     * @since 1.0.0
      */
     @Parameter(property = "swid.software_creator", required = false)
     private RegId software_creator;
 
     /**
      * TODO
+     * 
+     * @since 1.0.0
      */
     @Parameter(property = "swid.software_licensor", required = false)
     private RegId software_licensor;
 
     /**
      * TODO
+     * 
+     * @since 1.0.0
      */
     @Parameter(property = "swid.software_id", required = false)
     private RegId software_id;
 
     /**
      * TODO
+     * 
+     * @since 1.0.0
      */
     @Parameter(property = "swid.tag_creator", required = false)
     private RegId tag_creator;
