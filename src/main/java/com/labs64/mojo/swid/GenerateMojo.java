@@ -46,15 +46,15 @@ public class GenerateMojo extends AbstractMojo {
     private org.apache.maven.project.MavenProject project;
 
     /**
-     * Specifies the destination directory where the generated SWID tags files will be saved. 
+     * Specifies the destination directory where the generated SWID tags files will be saved.
      * 
      * @since 1.0.0
      */
-    @Parameter(property = "swid.outputDirectory", required = true, defaultValue = "${project.build.directory}")
+    @Parameter(property = "swid.outputDirectory", required = true, defaultValue = "${project.build.directory}/swid")
     private File outputDirectory;
 
     /**
-     * Specifies the encoding of the generated SWID tags files. If not specificed, the encoding value will be UTF-8. 
+     * Specifies the encoding of the generated SWID tags files. If not specified, the encoding value will be UTF-8.
      * 
      * @since 1.0.0
      */
@@ -62,7 +62,7 @@ public class GenerateMojo extends AbstractMojo {
     private String encoding;
 
     /**
-     * Specifies the extension of the generated SWID tags files. 
+     * Specifies the extension of the generated SWID tags files.
      * 
      * @since 1.0.0
      */
@@ -86,16 +86,15 @@ public class GenerateMojo extends AbstractMojo {
     private String product_title;
 
     /**
-     * Specifies software creator attributes.
-     * <br/>
+     * Specifies software creator attributes. <br/>
      * <b>Default values:</b>
+     * 
      * <pre>
      * &lt;software_creator&gt;
      *     &lt;name&gt;${project.organization.name}&lt;/name&gt;
      *     &lt;regid&gt;${project.organization.url}&lt;/regid&gt;
      * &lt;/software_creator&gt;
      * </pre>
-     * <br/>
      * 
      * @since 1.0.0
      */
@@ -103,16 +102,15 @@ public class GenerateMojo extends AbstractMojo {
     private RegId software_creator;
 
     /**
-     * Specifies software licensor attributes.
-     * <br/>
+     * Specifies software licensor attributes. <br/>
      * <b>Default values:</b>
+     * 
      * <pre>
      * &lt;software_licensor&gt;
      *     &lt;name&gt;${project.organization.name}&lt;/name&gt;
      *     &lt;regid&gt;${project.organization.url}&lt;/regid&gt;
      * &lt;/software_licensor&gt;
      * </pre>
-     * <br/>
      * 
      * @since 1.0.0
      */
@@ -120,16 +118,15 @@ public class GenerateMojo extends AbstractMojo {
     private RegId software_licensor;
 
     /**
-     * Specifies software identifier attributes.
-     * <br/>
+     * Specifies software identifier attributes. <br/>
      * <b>Default values:</b>
+     * 
      * <pre>
      * &lt;software_id&gt;
      *     &lt;unique_id&gt;${project.organization.name}&lt;/unique_id&gt;
      *     &lt;tag_creator_regid&gt;${project.organization.url}&lt;/tag_creator_regid&gt;
      * &lt;/software_id&gt;
      * </pre>
-     * <br/>
      * 
      * @since 1.0.0
      */
@@ -137,16 +134,15 @@ public class GenerateMojo extends AbstractMojo {
     private RegId software_id;
 
     /**
-     * Specifies tag creator attributes.
-     * <br/>
+     * Specifies tag creator attributes. <br/>
      * <b>Default values:</b>
+     * 
      * <pre>
      * &lt;tag_creator&gt;
      *     &lt;name&gt;${project.organization.name}&lt;/name&gt;
      *     &lt;regid&gt;${project.organization.url}&lt;/regid&gt;
      * &lt;/tag_creator&gt;
      * </pre>
-     * <br/>
      * 
      * @since 1.0.0
      */

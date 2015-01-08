@@ -16,10 +16,17 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 import org.apache.commons.io.FileUtils
 import org.apache.commons.io.filefilter.WildcardFileFilter
 
-File directory = new File("target/it/generate-custom-attr/target/swid");
+// Check build log
+build_log = new File(basedir, 'build.log')
+assert build_log.exists()
+assert build_log.getText().contains('BUILD SUCCESS')
+
+// Check output
+File directory = new File(basedir, "target/swid");
 File[] files = FileUtils.listFiles(directory, new WildcardFileFilter("*.xml"), null);
 
 println directory.absolutePath
