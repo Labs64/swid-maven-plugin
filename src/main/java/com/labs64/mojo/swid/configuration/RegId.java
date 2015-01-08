@@ -11,7 +11,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.labs64.mojo.swid;
+package com.labs64.mojo.swid.configuration;
 
 import org.apache.commons.lang3.StringUtils;
 

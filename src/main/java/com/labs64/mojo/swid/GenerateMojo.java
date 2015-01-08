@@ -20,14 +20,13 @@ import org.apache.maven.artifact.Artifact;
 import org.apache.maven.artifact.ArtifactUtils;
 import org.apache.maven.artifact.versioning.ArtifactVersion;
 import org.apache.maven.artifact.versioning.DefaultArtifactVersion;
-import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
-import org.apache.maven.plugins.annotations.Component;
 import org.apache.maven.plugins.annotations.LifecyclePhase;
 import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
 import org.iso.standards.iso._19770.__2._2009.schema.SoftwareIdentificationTagComplexType;
 
+import com.labs64.mojo.swid.configuration.RegId;
 import com.labs64.utils.swid.SwidBuilder;
 import com.labs64.utils.swid.io.SwidWriter;
 import com.labs64.utils.swid.processor.DefaultSwidProcessor;
@@ -40,10 +39,7 @@ import com.labs64.utils.swid.support.SwidUtils;
  * @see <a href="http://l64.cc/swid">SoftWare IDentification (SWID) Tags Generator</a>
  */
 @Mojo(name = "generate", defaultPhase = LifecyclePhase.PROCESS_RESOURCES)
-public class GenerateMojo extends AbstractMojo {
-
-    @Component
-    private org.apache.maven.project.MavenProject project;
+public class GenerateMojo extends AbstractSwidMojo {
 
     /**
      * Specifies the destination directory where the generated SWID tags files will be saved.
@@ -159,7 +155,7 @@ public class GenerateMojo extends AbstractMojo {
 
         final String regId = SwidUtils.generateRegId("2010-04", "com.labs64");
         // Parse a version String and add the components to a properties object.
-        String projectVersion = project.getVersion();
+        String projectVersion = getProject().getVersion();
         if (ArtifactUtils.isSnapshot(projectVersion)) {
             projectVersion = StringUtils.substring(projectVersion, 0, projectVersion.length()
                     - Artifact.SNAPSHOT_VERSION.length() - 1);
@@ -167,7 +163,7 @@ public class GenerateMojo extends AbstractMojo {
         ArtifactVersion artifactVersion = new DefaultArtifactVersion(projectVersion);
 
         final String fileName = SwidUtils.generateSwidFileName(regId,
-                project.getArtifactId(),
+                getProject().getArtifactId(),
                 projectVersion,
                 extension);
         File touch = new File(dir, fileName);
