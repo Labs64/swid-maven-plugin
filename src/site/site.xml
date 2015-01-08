@@ -63,6 +63,9 @@ under the License.
         <breadcrumbs>
             <item name="SWID Tags Generator for Maven" href="https://github.com/Labs64/swid-maven-plugin" />
         </breadcrumbs>
+        <links>
+            <item name="SWID Tags Generator (Java Library)" href="https://github.com/Labs64/swid-generator/" />
+        </links>
         <menu name="Overview">
             <item name="Introduction" href="index.html" />
             <item name="Goals" href="plugin-info.html" />
