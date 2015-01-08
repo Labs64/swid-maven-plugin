@@ -56,7 +56,6 @@ public class GenerateMojo extends AbstractMojo {
      */
     @Parameter(property = "swid.encoding", required = true, defaultValue = "${project.build.sourceEncoding}")
     private String encoding;
-
     /**
      * Encoding for the generated .swidtag files.
      */
@@ -70,27 +69,33 @@ public class GenerateMojo extends AbstractMojo {
     private Boolean entitlement_required;
 
     /**
-     * Encoding for the generated .swidtag files.
+     * TODO
      */
-    @Parameter(property = "swid.software_creator", required = false, defaultValue = "")
+    @Parameter(property = "swid.product_title", required = true, defaultValue = "${project.name}")
+    private String product_title;
+
+    /**
+     * TODO
+     */
+    @Parameter(property = "swid.software_creator", required = false)
     private RegId software_creator;
 
     /**
-     * Encoding for the generated .swidtag files.
+     * TODO
      */
-    @Parameter(property = "swid.software_licensor", required = false, defaultValue = "")
+    @Parameter(property = "swid.software_licensor", required = false)
     private RegId software_licensor;
 
     /**
-     * Encoding for the generated .swidtag files.
+     * TODO
      */
-    @Parameter(property = "swid.software_id", required = false, defaultValue = "")
+    @Parameter(property = "swid.software_id", required = false)
     private RegId software_id;
 
     /**
-     * Encoding for the generated .swidtag files.
+     * TODO
      */
-    @Parameter(property = "swid.tag_creator", required = false, defaultValue = "")
+    @Parameter(property = "swid.tag_creator", required = false)
     private RegId tag_creator;
 
     public void execute() throws MojoExecutionException {
@@ -119,7 +124,8 @@ public class GenerateMojo extends AbstractMojo {
         // prepare SWID Tag processor
         SwidProcessor processor = new DefaultSwidProcessor();
         ((DefaultSwidProcessor) processor).setEntitlementRequiredIndicator(entitlement_required)
-                .setProductTitle(project.getName())
+                .setProductTitle(product_title)
+                // TODO
                 .setProductVersion(projectVersion,
                         artifactVersion.getMajorVersion(),
                         artifactVersion.getMinorVersion(),
@@ -127,7 +133,7 @@ public class GenerateMojo extends AbstractMojo {
                         artifactVersion.getBuildNumber())
                 .setSoftwareCreator(software_creator.getName(), software_creator.getRegid())
                 .setSoftwareLicensor(software_licensor.getName(), software_licensor.getRegid())
-                .setSoftwareId(software_id.getName(), software_id.getRegid())
+                .setSoftwareId(software_id.getUnique_id(), software_id.getTag_creator_regid())
                 .setTagCreator(tag_creator.getName(), tag_creator.getRegid());
 
         // create builder and pass processor as build param

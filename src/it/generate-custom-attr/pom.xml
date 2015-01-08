@@ -6,7 +6,8 @@
     <groupId>@project.groupId@.it</groupId>
     <artifactId>@project.artifactId@-it</artifactId>
     <version>@project.version@</version>
-    <name>IT :: MOJO :: Generate</name>
+    <name>IT :: MOJO :: Generate - Name</name>
+    <description>IT :: MOJO :: Generate - Description</description>
 
     <url>http://www.labs64.com</url>
 
@@ -33,8 +34,12 @@
                             <goal>generate</goal>
                         </goals>
                         <configuration>
+                            <outputDirectory>${project.build.directory}/swid</outputDirectory>
+                            <encoding>UTF-8</encoding>
                             <extension>xml</extension>
                             <entitlement_required>true</entitlement_required>
+                            <product_title>${project.description}</product_title>
+                            <!-- TODO -->
                             <software_creator>
                                 <name>Labs64</name>
                                 <regid>reg.2010-04.com.labs64</regid>
@@ -44,8 +49,8 @@
                                 <regid>reg.2010-04.com.labs64</regid>
                             </software_licensor>
                             <software_id>
-                                <name>Labs64</name>
-                                <regid>reg.2010-04.com.labs64</regid>
+                                <unique_id>NLIC</unique_id>
+                                <tag_creator_regid>reg.2010-04.com.labs64</tag_creator_regid>
                             </software_id>
                             <tag_creator>
                                 <name>Labs64</name>
