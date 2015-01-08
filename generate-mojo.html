@@ -71,9 +71,15 @@
                 
                 
             
-                  <li id="publishDate" class="pull-right">Last Published: 08 Jan 2015</li>
+                  <li id="publishDate" class="pull-right"><span class="divider">|</span> Last Published: 08 Jan 2015</li>
             
-                            </ul>
+                                    
+    <li class="pull-right">
+                      <a href="http://www.labs64.com" class="externalLink" title="Labs64">
+        Labs64</a>
+      </li>
+
+                    </ul>
       </div>
 
             
@@ -205,7 +211,7 @@
       <p><b>Full name</b>:</p>
       <p>com.labs64.mojo:swid-maven-plugin:0.1.0-SNAPSHOT:generate</p>
       <p><b>Description</b>:</p>
-      <div>Goal which generates SWID Tag for a given POM.</div>
+      <div>A mojo that generates a SWID tag from a given POM.</div>
       <p><b>Attributes</b>:</p>
       <ul>
         <li>Requires a Maven project to be executed.</li>
@@ -223,7 +229,8 @@
             <td><b><a href="#outputDirectory">outputDirectory</a></b></td>
             <td><tt>File</tt></td>
             <td><tt>1.0.0</tt></td>
-            <td>Location of the generated SWID tags.<br /><b>Default value is</b>: <tt>${project.build.directory}</tt>.<br /><b>User property is</b>: <tt>swid.outputDirectory</tt>.</td>
+            <td>Specifies the destination directory where the generated SWID tags
+files will be saved.<br /><b>Default value is</b>: <tt>${project.build.directory}/swid</tt>.<br /><b>User property is</b>: <tt>swid.outputDirectory</tt>.</td>
           </tr>
         </table>
       </div>
@@ -239,7 +246,8 @@
             <td><b><a href="#encoding">encoding</a></b></td>
             <td><tt>String</tt></td>
             <td><tt>1.0.0</tt></td>
-            <td>Encoding for the generated SWID tags files.<br /><b>Default value is</b>: <tt>${project.build.sourceEncoding}</tt>.<br /><b>User property is</b>: <tt>swid.encoding</tt>.</td>
+            <td>Specifies the encoding of the generated SWID tags files. If not
+specified, the encoding value will be UTF-8.<br /><b>Default value is</b>: <tt>${project.build.sourceEncoding}</tt>.<br /><b>User property is</b>: <tt>swid.encoding</tt>.</td>
           </tr>
           <tr class="a">
             <td><b><a href="#entitlement_required">entitlement_required</a></b></td>
@@ -251,43 +259,72 @@
             <td><b><a href="#extension">extension</a></b></td>
             <td><tt>String</tt></td>
             <td><tt>1.0.0</tt></td>
-            <td>Encoding for the generated SWID tags files.<br /><b>Default value is</b>: <tt>swidtag</tt>.<br /><b>User property is</b>: <tt>swid.extension</tt>.</td>
+            <td>Specifies the extension of the generated SWID tags files.<br /><b>Default value is</b>: <tt>swidtag</tt>.<br /><b>User property is</b>: <tt>swid.extension</tt>.</td>
           </tr>
           <tr class="a">
             <td><b><a href="#product_title">product_title</a></b></td>
             <td><tt>String</tt></td>
             <td><tt>1.0.0</tt></td>
-            <td>TODO<br /><b>Default value is</b>: <tt>${project.name}</tt>.<br /><b>User property is</b>: <tt>swid.product_title</tt>.</td>
+            <td>Specifies product title.<br /><b>Default value is</b>: <tt>${project.name}</tt>.<br /><b>User property is</b>: <tt>swid.product_title</tt>.</td>
           </tr>
           <tr class="b">
             <td><b><a href="#software_creator">software_creator</a></b></td>
             <td><tt>RegId</tt></td>
             <td><tt>1.0.0</tt></td>
-            <td>TODO<br /><b>User property is</b>: <tt>swid.software_creator</tt>.</td>
+            <td>Specifies software creator attributes. <br />
+<b>Default values:</b> 
+<div><pre>
+&lt;software_creator&gt;
+    &lt;name&gt;${project.organization.name}&lt;/name&gt;
+    &lt;regid&gt;${project.organization.url}&lt;/regid&gt;
+&lt;/software_creator&gt;
+</pre></div><br /><b>User property is</b>: <tt>swid.software_creator</tt>.</td>
           </tr>
           <tr class="a">
             <td><b><a href="#software_id">software_id</a></b></td>
             <td><tt>RegId</tt></td>
             <td><tt>1.0.0</tt></td>
-            <td>TODO<br /><b>User property is</b>: <tt>swid.software_id</tt>.</td>
+            <td>Specifies software identifier attributes. <br />
+<b>Default values:</b> 
+<div><pre>
+&lt;software_id&gt;
+    &lt;unique_id&gt;${project.organization.name}&lt;/unique_id&gt;
+    &lt;tag_creator_regid&gt;${project.organization.url}&lt;/tag_creator_regid&gt;
+&lt;/software_id&gt;
+</pre></div><br /><b>User property is</b>: <tt>swid.software_id</tt>.</td>
           </tr>
           <tr class="b">
             <td><b><a href="#software_licensor">software_licensor</a></b></td>
             <td><tt>RegId</tt></td>
             <td><tt>1.0.0</tt></td>
-            <td>TODO<br /><b>User property is</b>: <tt>swid.software_licensor</tt>.</td>
+            <td>Specifies software licensor attributes. <br />
+<b>Default values:</b> 
+<div><pre>
+&lt;software_licensor&gt;
+    &lt;name&gt;${project.organization.name}&lt;/name&gt;
+    &lt;regid&gt;${project.organization.url}&lt;/regid&gt;
+&lt;/software_licensor&gt;
+</pre></div><br /><b>User property is</b>: <tt>swid.software_licensor</tt>.</td>
           </tr>
           <tr class="a">
             <td><b><a href="#tag_creator">tag_creator</a></b></td>
             <td><tt>RegId</tt></td>
             <td><tt>1.0.0</tt></td>
-            <td>TODO<br /><b>User property is</b>: <tt>swid.tag_creator</tt>.</td>
+            <td>Specifies tag creator attributes. <br />
+<b>Default values:</b> 
+<div><pre>
+&lt;tag_creator&gt;
+    &lt;name&gt;${project.organization.name}&lt;/name&gt;
+    &lt;regid&gt;${project.organization.url}&lt;/regid&gt;
+&lt;/tag_creator&gt;
+</pre></div><br /><b>User property is</b>: <tt>swid.tag_creator</tt>.</td>
           </tr>
         </table>
       </div>
       <div class="section"><h3>Parameter Details<a name="Parameter_Details"></a></h3>
         <p><b><a name="encoding">encoding</a>:</b></p>
-        <div>Encoding for the generated SWID tags files.</div>
+        <div>Specifies the encoding of the generated SWID tags files. If not
+specified, the encoding value will be UTF-8.</div>
         <ul>
           <li><b>Type</b>: <tt>java.lang.String</tt></li>
           <li><b>Since</b>: <tt>1.0.0</tt></li>
@@ -303,7 +340,7 @@
           <li><b>User Property</b>: <tt>swid.entitlement_required</tt></li>
           <li><b>Default</b>: <tt>false</tt></li>
         </ul><hr /><p><b><a name="extension">extension</a>:</b></p>
-        <div>Encoding for the generated SWID tags files.</div>
+        <div>Specifies the extension of the generated SWID tags files.</div>
         <ul>
           <li><b>Type</b>: <tt>java.lang.String</tt></li>
           <li><b>Since</b>: <tt>1.0.0</tt></li>
@@ -311,15 +348,16 @@
           <li><b>User Property</b>: <tt>swid.extension</tt></li>
           <li><b>Default</b>: <tt>swidtag</tt></li>
         </ul><hr /><p><b><a name="outputDirectory">outputDirectory</a>:</b></p>
-        <div>Location of the generated SWID tags.</div>
+        <div>Specifies the destination directory where the generated SWID tags
+files will be saved.</div>
         <ul>
           <li><b>Type</b>: <tt>java.io.File</tt></li>
           <li><b>Since</b>: <tt>1.0.0</tt></li>
           <li><b>Required</b>: <tt>Yes</tt></li>
           <li><b>User Property</b>: <tt>swid.outputDirectory</tt></li>
-          <li><b>Default</b>: <tt>${project.build.directory}</tt></li>
+          <li><b>Default</b>: <tt>${project.build.directory}/swid</tt></li>
         </ul><hr /><p><b><a name="product_title">product_title</a>:</b></p>
-        <div>TODO</div>
+        <div>Specifies product title.</div>
         <ul>
           <li><b>Type</b>: <tt>java.lang.String</tt></li>
           <li><b>Since</b>: <tt>1.0.0</tt></li>
@@ -327,28 +365,56 @@
           <li><b>User Property</b>: <tt>swid.product_title</tt></li>
           <li><b>Default</b>: <tt>${project.name}</tt></li>
         </ul><hr /><p><b><a name="software_creator">software_creator</a>:</b></p>
-        <div>TODO</div>
+        <div>Specifies software creator attributes. <br />
+<b>Default values:</b> 
+<div><pre>
+&lt;software_creator&gt;
+    &lt;name&gt;${project.organization.name}&lt;/name&gt;
+    &lt;regid&gt;${project.organization.url}&lt;/regid&gt;
+&lt;/software_creator&gt;
+</pre></div></div>
         <ul>
           <li><b>Type</b>: <tt>com.labs64.mojo.swid.RegId</tt></li>
           <li><b>Since</b>: <tt>1.0.0</tt></li>
           <li><b>Required</b>: <tt>No</tt></li>
           <li><b>User Property</b>: <tt>swid.software_creator</tt></li>
         </ul><hr /><p><b><a name="software_id">software_id</a>:</b></p>
-        <div>TODO</div>
+        <div>Specifies software identifier attributes. <br />
+<b>Default values:</b> 
+<div><pre>
+&lt;software_id&gt;
+    &lt;unique_id&gt;${project.organization.name}&lt;/unique_id&gt;
+    &lt;tag_creator_regid&gt;${project.organization.url}&lt;/tag_creator_regid&gt;
+&lt;/software_id&gt;
+</pre></div></div>
         <ul>
           <li><b>Type</b>: <tt>com.labs64.mojo.swid.RegId</tt></li>
           <li><b>Since</b>: <tt>1.0.0</tt></li>
           <li><b>Required</b>: <tt>No</tt></li>
           <li><b>User Property</b>: <tt>swid.software_id</tt></li>
         </ul><hr /><p><b><a name="software_licensor">software_licensor</a>:</b></p>
-        <div>TODO</div>
+        <div>Specifies software licensor attributes. <br />
+<b>Default values:</b> 
+<div><pre>
+&lt;software_licensor&gt;
+    &lt;name&gt;${project.organization.name}&lt;/name&gt;
+    &lt;regid&gt;${project.organization.url}&lt;/regid&gt;
+&lt;/software_licensor&gt;
+</pre></div></div>
         <ul>
           <li><b>Type</b>: <tt>com.labs64.mojo.swid.RegId</tt></li>
           <li><b>Since</b>: <tt>1.0.0</tt></li>
           <li><b>Required</b>: <tt>No</tt></li>
           <li><b>User Property</b>: <tt>swid.software_licensor</tt></li>
         </ul><hr /><p><b><a name="tag_creator">tag_creator</a>:</b></p>
-        <div>TODO</div>
+        <div>Specifies tag creator attributes. <br />
+<b>Default values:</b> 
+<div><pre>
+&lt;tag_creator&gt;
+    &lt;name&gt;${project.organization.name}&lt;/name&gt;
+    &lt;regid&gt;${project.organization.url}&lt;/regid&gt;
+&lt;/tag_creator&gt;
+</pre></div></div>
         <ul>
           <li><b>Type</b>: <tt>com.labs64.mojo.swid.RegId</tt></li>
           <li><b>Since</b>: <tt>1.0.0</tt></li>

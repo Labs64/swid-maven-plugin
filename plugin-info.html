@@ -69,9 +69,15 @@
                 
                 
             
-                  <li id="publishDate" class="pull-right">Last Published: 08 Jan 2015</li>
+                  <li id="publishDate" class="pull-right"><span class="divider">|</span> Last Published: 08 Jan 2015</li>
             
-                            </ul>
+                                    
+    <li class="pull-right">
+                      <a href="http://www.labs64.com" class="externalLink" title="Labs64">
+        Labs64</a>
+      </li>
+
+                    </ul>
       </div>
 
             
@@ -216,7 +222,7 @@
                 
         <div id="bodyColumn"  class="span9" >
                                   
-            <div class="section"><h2>Plugin Documentation<a name="Plugin_Documentation"></a></h2><a name="Plugin_Documentation"></a><p>Goals available for this plugin:</p><table border="0" class="table table-striped"><tr class="a"><th>Goal</th><th>Description</th></tr><tr class="b"><td><a href="generate-mojo.html">swid:generate</a></td><td>Goal which generates SWID Tag for a given POM.</td></tr><tr class="a"><td><a href="help-mojo.html">swid:help</a></td><td>Display help information on swid-maven-plugin.<br />
+            <div class="section"><h2>Plugin Documentation<a name="Plugin_Documentation"></a></h2><a name="Plugin_Documentation"></a><p>Goals available for this plugin:</p><table border="0" class="table table-striped"><tr class="a"><th>Goal</th><th>Description</th></tr><tr class="b"><td><a href="generate-mojo.html">swid:generate</a></td><td>A mojo that generates a SWID tag from a given POM.</td></tr><tr class="a"><td><a href="help-mojo.html">swid:help</a></td><td>Display help information on swid-maven-plugin.<br />
 Call <code>mvn swid-maven-plugin:help -Ddetail=true
 -Dgoal=&lt;goal-name&gt;</code> to display parameter details.</td></tr></table><div class="section"><h3>System Requirements<a name="System_Requirements"></a></h3><a name="System_Requirements"></a><p>The following specifies the minimum requirements to run this Maven plugin:</p><table border="0" class="table table-striped"><tr class="a"><td>Maven</td><td>3.0.4</td></tr><tr class="b"><td>JDK</td><td>1.6</td></tr><tr class="a"><td>Memory</td><td>No minimum requirement.</td></tr><tr class="b"><td>Disk Space</td><td>No minimum requirement.</td></tr></table></div><div class="section"><h3>Usage<a name="Usage"></a></h3><a name="Usage"></a><p>You should specify the version in your project's plugin configuration:</p><div class="source"><pre class="prettyprint">&lt;project&gt;
   ...
