@@ -27,23 +27,22 @@
 
 ${project.description}
 
-  This plugin manages the license of a maven project and its dependencies
-  (update file headers, download dependencies licenses, check thirdparty
-  licenses, ...)
+  This plugin manages the generation of SoftWare IDentification (SWID) Tags for a maven project
+  and its dependencies.
 
 * {Goals} Overview
 
   The following goals are meant to participate in the default build lifecycle:
 
   * <<<{{{./generate-mojo.html}swid:generate}}>>>\
-    Generates a file containing a list of all dependencies and their licenses for a single project build.
+    Generates a file containing a SWID elements according to the {{{http://www.iso.org/iso/home/store/catalogue_tc/catalogue_detail.htm?csnumber=53670}ISO/IEC 19770-2:2009}}.
 
 * {Usage}
 
-  General instructions on how to use the SWID Tags Generator Plugin can be found on the {{{./usage.html}usage page}}. Some more
-  specific use cases are described in the examples given below. Last but not least, users occasionally contribute
+  General instructions on how to use the SWID Tags Generator Plugin can be found on the {{{./usage.html}usage page}}.
+  Some more specific use cases are described in the examples given below. Last but not least, users occasionally contribute
   additional examples, tips or errata to the
-  {{{http://docs.codehaus.org/display/MAVENUSER/License+Maven+Plugin}plugin's wiki page}}.
+  {{{https://groups.google.com/group/swid-maven-plugin}plugin's discussion group}}.
 
   In case you still have questions regarding the plugin's usage, please have a look at the {{{./faq.html}FAQ}} and feel
   free to contact the {{{./mail-lists.html}user mailing list}}. The posts to the mailing list are archived and could
@@ -55,12 +54,11 @@ ${project.description}
   concern. Especially for fixing bugs it is crucial that the developers can reproduce your problem. For this reason,
   entire debug logs, POMs or most preferably little demo projects attached to the issue are very much appreciated.
   Of course, patches are welcome, too. Contributors can check out the project from our
-  {{{./source-repository.html}source repository}} and will find supplementary information in the
-  {{{http://mojo.codehaus.org/development/guidelines.html}development guidelines}}.
+  {{{./source-repository.html}source repository}}.
 
 * {Examples}
 
   To provide you with better understanding of some usages of the SWID Tags Generator Plugin, you can take a look at the following
   examples:
 
-  * {{{./examples/generate.html}Generate SWID Tag}}
+  * {{{./examples/generate.html}Generate SoftWare IDentification (SWID) Tags}}
