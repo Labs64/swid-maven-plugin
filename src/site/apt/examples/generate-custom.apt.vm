@@ -44,7 +44,7 @@ Generate SWID Tags :: Custom Configuration Example
               <goal>generate</goal>
             </goals>
               <configuration>
-                  <outputDirectory>${project.build.directory}/generated-resources/swid/com.labs64</outputDirectory>
+                  <outputDirectory>generated-resources/swid/com.labs64</outputDirectory>
                   <encoding>UTF-8</encoding>
                   <extension>xml</extension>
                   <entitlement_required>true</entitlement_required>

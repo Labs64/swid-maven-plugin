@@ -20,14 +20,117 @@ under the License.
 -->
 
 <faqs id="FAQ" title="Frequently Asked Questions">
-  <part id="General">
-    <faq id="swid-offer">
-      <question>What goals does the SWID Tags Generator Maven Plugin offer?</question>
-      <answer>
-        <p>
-          The plugin offers the <a href="generate-mojo.html">swid:generate</a> goal for generating SoftWare IDentification (SWID) Tags.
-        </p>
-      </answer>
-    </faq>
-  </part>
+    <part id="General">
+        <faq id="swid-10">
+            <question>What goals does the SWID Tags Generator Maven Plugin offer?</question>
+            <answer>
+                <p>
+                    The plugin offers the
+                    <a href="generate-mojo.html">swid:generate</a>
+                    goal for generating SoftWare IDentification (SWID) Tags based on the Maven POM.
+                </p>
+            </answer>
+        </faq>
+        <faq id="swid-20">
+            <question>Does the SWID file need a special program to read it?</question>
+            <answer>
+                <p>
+                    No. The
+                    <i>.swidtag</i>
+                    XML file is human readable and can be opened in a Text or XML editor.
+                </p>
+            </answer>
+        </faq>
+        <faq id="swid-30">
+            <question>What kind of information will these tags give me?</question>
+            <answer>
+                <p>
+                    These SoftWare IDentification tags are simply small XML data files that are installed with the
+                    software. They contain the following mandatory data elements: Entitlement Required (yes/no), Product
+                    Title, Product Version, Software Creator, Software Licensor, Tag Creator, and Unique Software
+                    Identifier.
+                </p>
+            </answer>
+        </faq>
+        <faq id="swid-40">
+            <question>Where are SWID Tags located on a system?</question>
+            <answer>
+                <p>
+                    The location of .swidtag tag files is platform specific:
+                    <ul>
+                        <li>Windows XP: %ALLUSERSPROFILE%\Application Data\&lt;regid&gt;</li>
+                        <li>Windows Vista &amp; Windows 7, 8: %PROGRAMDATA%\&lt;regid&gt;</li>
+                        <li>Mac OS: /Library/Application Support/&lt;regid&gt;</li>
+                    </ul>
+                </p>
+            </answer>
+        </faq>
+        <faq id="swid-50">
+            <question>Which customers do you think will see the most benefit from these tags?</question>
+            <answer>
+                <p>
+                    Corporate &amp; Government customers of all sizes will likely find these tags helpful in managing
+                    their
+                    enterprise IT environments. Small and medium business can also benefit from the simplification of
+                    the inventory reconciliation that these tags can bring.
+                </p>
+            </answer>
+        </faq>
+        <faq id="swid-60">
+            <question>Do all SAM providers and deployment vendors support reading and reporting the Software ID tags?
+            </question>
+            <answer>
+                <p>
+                    Implementation of the ISO standard into SAM and deployment solutions has been slower than
+                    anticipated, but many major vendors made commitments to the standard. Please contact your solution
+                    provider for more info on their support.
+                    <br />
+                    Support for SoftWare IDentification (SWID) Tags in
+                    <a href="http://www.labs64.com/netlicensing/">Labs64 NetLicensing</a>
+                    is planned.
+                </p>
+            </answer>
+        </faq>
+        <faq id="swid-70">
+            <question>What’s the different between ISO/IEC 19770-1 and ISO/IEC 19970-2?</question>
+            <answer>
+                <p>
+                    ISO/IEC 19770 is a multi-part standard for Software Asset Management (SAM), currently with two parts
+                    publicly available for implementation and one 'work-in-progress' part. Each part is identified by a
+                    unique suffix.
+                    <ul>
+                        <li>Part 1 (ISO/IEC 19770-1:2012) outlines business processes for successful software asset
+                            management.
+                        </li>
+                        <li>Part 2 (ISO/IEC 19770-2:2009) outlines the structure for software identification tags, which
+                            can be used to improve the accuracy of software inventory collection as part of SAM.
+                        </li>
+                        <li>Part 3 (ISO/IEC 19770-3:20yy) will provide a software asset management data standard for
+                            software licensing entitlement tags.
+                        </li>
+                    </ul>
+                </p>
+            </answer>
+        </faq>
+        <faq id="swid-80">
+            <question>Where can I get a complete copy of this standard?</question>
+            <answer>
+                <p>
+                    A complete copy of the official ISO/IEC 19770-2:2009 standard can be purchased
+                    <a href="http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=53670"
+                       target="_blank">here</a>&nbsp;&nbsp;or&nbsp;&nbsp;<a
+                        href="http://webstore.iec.ch/webstore/webstore.nsf/ArtNum_Popup/43526!opendocument"
+                        target="_blank">here</a>.
+                </p>
+            </answer>
+        </faq>
+        <faq id="swid-90">
+            <question>Where can I find more info about Software ID tags?</question>
+            <answer>
+                <p>
+                    <a href="http://tagvault.org/" target="_blank">tagvault.org</a>
+                </p>
+            </answer>
+        </faq>
+    </part>
 </faqs>
