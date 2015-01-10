@@ -46,7 +46,7 @@ public class GenerateMojo extends AbstractSwidMojo {
      * 
      * @since 1.0.0
      */
-    @Parameter(property = "swid.outputDirectory", required = true, defaultValue = "${project.build.directory}/swid")
+    @Parameter(property = "swid.outputDirectory", required = true, defaultValue = "${project.build.directory}/generated-resources/swid")
     private File outputDirectory;
 
     /**

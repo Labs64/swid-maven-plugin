@@ -73,7 +73,8 @@ under the License.
             <item name="FAQ" href="faq.html" />
         </menu>
         <menu name="Examples">
-            <item name="Generate SWID Tag" href="examples/generate.html" />
+            <item name="Generate :: Basic Example" href="examples/generate-basic.html" />
+            <item name="Generate :: Custom Configuration Example" href="examples/generate-custom.html" />
         </menu>
         <menu name="Developer Info">
             <item name="Releases" href="https://github.com/Labs64/swid-maven-plugin/releases" />
@@ -82,7 +83,7 @@ under the License.
         </menu>
         <menu ref="reports" />
         <menu name="External Links">
-            <item name="SWID Tags Generator (Java Library)" href="https://github.com/Labs64/swid-generator/" />
+            <item name="SWID Tags Generator (Java Library)" href="http://l64.cc/swid" />
             <item name="Labs64 NetLicensing" href="http://www.labs64.com/netlicensing/" />
         </menu>
     </body>

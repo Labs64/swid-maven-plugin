@@ -26,7 +26,7 @@ assert build_log.exists()
 assert build_log.getText().contains('BUILD SUCCESS')
 
 // Check output
-File directory = new File(basedir, "target/swid");
+File directory = new File(basedir, "target/generated-resources/swid/com.labs64");
 File[] files = FileUtils.listFiles(directory, new WildcardFileFilter("*.xml"), null);
 
 println directory.absolutePath

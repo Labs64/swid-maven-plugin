@@ -27,7 +27,7 @@ assert build_log.exists()
 assert build_log.getText().contains('BUILD SUCCESS')
 
 // Check output
-File directory = new File(basedir, "target/swid");
+File directory = new File(basedir, "target/generated-resources/swid");
 File[] files = FileUtils.listFiles(directory, new WildcardFileFilter("*.swidtag"), null);
 
 println directory.absolutePath

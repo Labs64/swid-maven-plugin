@@ -28,7 +28,7 @@
 ${project.description}
 
   This plugin manages the generation of SoftWare IDentification (SWID) Tags for a maven project
-  and its dependencies. This plugin uses the {{{l64.cc/swid}SWID Tags Generator (Java Library)}} as a base.
+  and its dependencies. This plugin uses the {{{http://l64.cc/swid}SWID Tags Generator (Java Library)}} as a base.
 
 * {Goals} Overview
 
@@ -61,4 +61,6 @@ ${project.description}
   To provide you with better understanding of some usages of the SWID Tags Generator Plugin, you can take a look at the following
   examples:
 
-  * {{{./examples/generate.html}Generate SoftWare IDentification (SWID) Tags}}
+  * {{{./examples/generate-basic.html}Generate SWID Tags :: Basic Example}}
+
+  * {{{./examples/generate-custom.html}Generate SWID Tags :: Custom Configuration Example}}

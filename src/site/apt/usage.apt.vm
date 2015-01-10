@@ -26,7 +26,7 @@
 
 Usage
 
-  The common usage is to simply declare the plugin and its goals. The 'process-resources' phase will be bound to by default.
+  The common usage is to simply declare the plugin and its goals. The <<<process-resources>>> phase will be bound to by default.
 
 -------------------
 <project>
