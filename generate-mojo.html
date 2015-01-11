@@ -54,7 +54,7 @@
         <ul class="breadcrumb">
                 
             
-                  <li id="projectVersion">Version: 0.1.0-SNAPSHOT
+                  <li id="projectVersion">Version: 0.2.0-SNAPSHOT
                           <span class="divider">|</span>
                     </li>
                               <li class="">
@@ -212,7 +212,7 @@
   
     <div class="section"><h2>swid:generate<a name="swid:generate"></a></h2>
       <p><b>Full name</b>:</p>
-      <p>com.labs64.mojo:swid-maven-plugin:0.1.0-SNAPSHOT:generate</p>
+      <p>com.labs64.mojo:swid-maven-plugin:0.2.0-SNAPSHOT:generate</p>
       <p><b>Description</b>:</p>
       <div>A mojo that generates a SWID tag from a given POM.</div>
       <p><b>Attributes</b>:</p>
@@ -246,38 +246,48 @@ files will be saved.<br /><b>Default value is</b>: <tt>${project.build.directory
             <th>Description</th>
           </tr>
           <tr class="b">
+            <td><b><a href="#domain_creation_date">domain_creation_date</a></b></td>
+            <td><tt>String</tt></td>
+            <td><tt>1.0.0</tt></td>
+            <td>Specifies domain creation date which belongs to the software
+creator. <br />
+Format: <tt>'yyyy-MM'</tt> <br />
+Example: <tt>'2010-04'</tt><br />
+Default value: <tt>current date</tt><br /><b>User property is</b>: <tt>swid.domain_creation_date</tt>.</td>
+          </tr>
+          <tr class="a">
             <td><b><a href="#encoding">encoding</a></b></td>
             <td><tt>String</tt></td>
             <td><tt>1.0.0</tt></td>
             <td>Specifies the encoding of the generated SWID tags files. <br />
 <b>Fallback value(s):</b> <tt>UTF-8</tt><br /><b>Default value is</b>: <tt>${project.build.sourceEncoding}</tt>.<br /><b>User property is</b>: <tt>swid.encoding</tt>.</td>
           </tr>
-          <tr class="a">
+          <tr class="b">
             <td><b><a href="#entitlement_required">entitlement_required</a></b></td>
             <td><tt>Boolean</tt></td>
             <td><tt>1.0.0</tt></td>
             <td>Specifies if an entitlement is required to reconcile this product.<br /><b>Default value is</b>: <tt>false</tt>.<br /><b>User property is</b>: <tt>swid.entitlement_required</tt>.</td>
           </tr>
-          <tr class="b">
+          <tr class="a">
             <td><b><a href="#extension">extension</a></b></td>
             <td><tt>String</tt></td>
             <td><tt>1.0.0</tt></td>
             <td>Specifies the extension of the generated SWID tags files.<br /><b>Default value is</b>: <tt>swidtag</tt>.<br /><b>User property is</b>: <tt>swid.extension</tt>.</td>
           </tr>
-          <tr class="a">
+          <tr class="b">
             <td><b><a href="#product_title">product_title</a></b></td>
             <td><tt>String</tt></td>
             <td><tt>1.0.0</tt></td>
             <td>Specifies product title. <br />
 <b>Fallback value(s):</b> <tt>${project.artifactId}</tt><br /><b>Default value is</b>: <tt>${project.name}</tt>.<br /><b>User property is</b>: <tt>swid.product_title</tt>.</td>
           </tr>
-          <tr class="b">
+          <tr class="a">
             <td><b><a href="#product_version">product_version</a></b></td>
             <td><tt>String</tt></td>
             <td><tt>1.0.0</tt></td>
             <td>Specifies product version.<br /><b>Default value is</b>: <tt>${project.version}</tt>.<br /><b>User property is</b>: <tt>swid.product_version</tt>.</td>
           </tr>
-          <tr class="a">
+          <tr class="b">
             <td><b><a href="#software_creator">software_creator</a></b></td>
             <td><tt>RegId</tt></td>
             <td><tt>1.0.0</tt></td>
@@ -292,7 +302,7 @@ files will be saved.<br /><b>Default value is</b>: <tt>${project.build.directory
 &lt;/software_creator&gt;
 </pre></div><br /><b>Default value is</b>: <tt>${software_creator}</tt>.<br /></td>
           </tr>
-          <tr class="b">
+          <tr class="a">
             <td><b><a href="#software_id">software_id</a></b></td>
             <td><tt>RegId</tt></td>
             <td><tt>1.0.0</tt></td>
@@ -307,7 +317,7 @@ ${project.groupId}</tt><br />
 &lt;/software_id&gt;
 </pre></div><br /><b>Default value is</b>: <tt>${software_id}</tt>.<br /></td>
           </tr>
-          <tr class="a">
+          <tr class="b">
             <td><b><a href="#software_licensor">software_licensor</a></b></td>
             <td><tt>RegId</tt></td>
             <td><tt>1.0.0</tt></td>
@@ -322,7 +332,7 @@ ${project.groupId}</tt><br />
 &lt;/software_licensor&gt;
 </pre></div><br /><b>Default value is</b>: <tt>${software_licensor}</tt>.<br /></td>
           </tr>
-          <tr class="b">
+          <tr class="a">
             <td><b><a href="#tag_creator">tag_creator</a></b></td>
             <td><tt>RegId</tt></td>
             <td><tt>1.0.0</tt></td>
@@ -340,7 +350,18 @@ ${project.groupId}</tt><br />
         </table>
       </div>
       <div class="section"><h3>Parameter Details<a name="Parameter_Details"></a></h3>
-        <p><b><a name="encoding">encoding</a>:</b></p>
+        <p><b><a name="domain_creation_date">domain_creation_date</a>:</b></p>
+        <div>Specifies domain creation date which belongs to the software
+creator. <br />
+Format: <tt>'yyyy-MM'</tt> <br />
+Example: <tt>'2010-04'</tt><br />
+Default value: <tt>current date</tt></div>
+        <ul>
+          <li><b>Type</b>: <tt>java.lang.String</tt></li>
+          <li><b>Since</b>: <tt>1.0.0</tt></li>
+          <li><b>Required</b>: <tt>No</tt></li>
+          <li><b>User Property</b>: <tt>swid.domain_creation_date</tt></li>
+        </ul><hr /><p><b><a name="encoding">encoding</a>:</b></p>
         <div>Specifies the encoding of the generated SWID tags files. <br />
 <b>Fallback value(s):</b> <tt>UTF-8</tt></div>
         <ul>
