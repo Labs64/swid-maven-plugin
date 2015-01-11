@@ -51,19 +51,19 @@ Generate SWID Tags :: Custom Configuration Example
                   <product_title>${project.description}</product_title>
                   <software_creator>
                       <name>Labs64</name>
-                      <regid>reg.2010-04.com.labs64</regid>
+                      <regid>regid.2010-04.com.labs64</regid>
                   </software_creator>
                   <software_licensor>
                       <name>Labs64</name>
-                      <regid>reg.2010-04.com.labs64</regid>
+                      <regid>regid.2010-04.com.labs64</regid>
                   </software_licensor>
                   <software_id>
                       <unique_id>NLIC</unique_id>
-                      <tag_creator_regid>reg.2010-04.com.labs64</tag_creator_regid>
+                      <tag_creator_regid>regid.2010-04.com.labs64</tag_creator_regid>
                   </software_id>
                   <tag_creator>
                       <name>Labs64</name>
-                      <regid>reg.2010-04.com.labs64</regid>
+                      <regid>regid.2010-04.com.labs64</regid>
                   </tag_creator>
               </configuration>
           </execution>
