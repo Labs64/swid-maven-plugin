@@ -14,7 +14,6 @@
 package com.labs64.mojo.swid;
 
 import java.io.File;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.apache.commons.lang3.StringUtils;
@@ -30,7 +29,6 @@ import org.iso.standards.iso._19770.__2._2009.schema.SoftwareIdentificationTagCo
 
 import com.labs64.mojo.swid.configuration.RegId;
 import com.labs64.utils.swid.SwidBuilder;
-import com.labs64.utils.swid.exception.SwidException;
 import com.labs64.utils.swid.io.SwidWriter;
 import com.labs64.utils.swid.processor.DefaultSwidProcessor;
 import com.labs64.utils.swid.processor.SwidProcessor;
@@ -97,6 +95,17 @@ public class GenerateMojo extends AbstractSwidMojo {
      */
     @Parameter(property = "swid.product_version", required = false, defaultValue = "${project.version}")
     private String product_version;
+
+    /**
+     * Specifies domain creation date which belongs to the software creator. <br/>
+     * Format: <code>'yyyy-MM'</code> <br/>
+     * Example: <code>'2010-04'</code><br/>
+     * Default value: <tt>current date</tt>
+     * 
+     * @since 1.0.0
+     */
+    @Parameter(property = "swid.domain_creation_date", required = false)
+    private String domain_creation_date;
 
     /**
      * Specifies software creator attributes.
@@ -200,8 +209,9 @@ public class GenerateMojo extends AbstractSwidMojo {
         SoftwareIdentificationTagComplexType swidTag = builder.build(processor);
 
         // output resulting object
-        final String fileName = SwidUtils.generateSwidFileName(software_creator.getRegid(),
-                getProject().getArtifactId(),
+        final String fileName = SwidUtils.generateSwidFileName(
+                software_creator.getRegid(),
+                software_id.getUnique_id(),
                 product_version,
                 extension);
         if (!outputDirectory.exists()) {
@@ -222,21 +232,11 @@ public class GenerateMojo extends AbstractSwidMojo {
         return new DefaultArtifactVersion(product_version);
     }
 
-    /**
-     * Generate domain date in format <code>'yyyy-MM'</code>.
-     * 
-     * @param domainDate
-     *            the domain date
-     * @return generated domain date in format <code>'yyyy-MM'</code>; e.g. <code>'2010-04'</code>
-     * @deprecated wait for the next swid-generator version :: 0.3.0
-     */
-    private String generateDomainDate(final Date domainDate) {
-        if (domainDate == null) {
-            throw new SwidException("domainDate isn't defined");
+    private String getDomainDate() {
+        if (StringUtils.isBlank(domain_creation_date)) {
+            domain_creation_date = SwidUtils.generateDomainDate(new Date());
         }
-
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM");
-        return dateFormat.format(domainDate);
+        return domain_creation_date;
     }
 
     private RegId getDefaultRegId() {
@@ -249,7 +249,7 @@ public class GenerateMojo extends AbstractSwidMojo {
                 getProject().getUrl() : getProject().getOrganization().getUrl();
         final String reverseDomainName = StringUtils.isBlank(url) ?
                 getProject().getGroupId() : SwidUtils.revertDomainName(url);
-        regid.setRegid(SwidUtils.generateRegId(generateDomainDate(new Date()), reverseDomainName));
+        regid.setRegid(SwidUtils.generateRegId(getDomainDate(), reverseDomainName));
 
         return regid;
     }
