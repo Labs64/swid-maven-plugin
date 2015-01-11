@@ -28,7 +28,7 @@ Generate SWID Tags :: Basic Example
 
   This example shows how to configure the <<<generate>>> goal for basic usage.
   
--------------------
++-----
 <project>
   ...
   <build>
@@ -51,7 +51,7 @@ Generate SWID Tags :: Basic Example
   </build>
   ...
 </project>
--------------------
++-----
 
   For the <<<generate>>> goal, SWID Tags will by default be created in the directory 
   <<<target/generated-resources/swid>>>. This can be configured using the <<<outputDirectory>>> parameter.

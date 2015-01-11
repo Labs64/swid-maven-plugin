@@ -14,6 +14,8 @@
 package com.labs64.mojo.swid;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.maven.artifact.Artifact;
@@ -28,6 +30,7 @@ import org.iso.standards.iso._19770.__2._2009.schema.SoftwareIdentificationTagCo
 
 import com.labs64.mojo.swid.configuration.RegId;
 import com.labs64.utils.swid.SwidBuilder;
+import com.labs64.utils.swid.exception.SwidException;
 import com.labs64.utils.swid.io.SwidWriter;
 import com.labs64.utils.swid.processor.DefaultSwidProcessor;
 import com.labs64.utils.swid.processor.SwidProcessor;
@@ -50,7 +53,10 @@ public class GenerateMojo extends AbstractSwidMojo {
     private File outputDirectory;
 
     /**
-     * Specifies the encoding of the generated SWID tags files. If not specified, the encoding value will be UTF-8.
+     * Specifies the encoding of the generated SWID tags files.
+     * 
+     * <br/>
+     * <b>Fallback value(s):</b> <tt>UTF-8</tt>
      * 
      * @since 1.0.0
      */
@@ -76,14 +82,28 @@ public class GenerateMojo extends AbstractSwidMojo {
     /**
      * Specifies product title.
      * 
+     * <br/>
+     * <b>Fallback value(s):</b> <tt>${project.artifactId}</tt>
+     * 
      * @since 1.0.0
      */
     @Parameter(property = "swid.product_title", required = false, defaultValue = "${project.name}")
     private String product_title;
 
     /**
-     * Specifies software creator attributes. <br/>
-     * <b>Default values:</b>
+     * Specifies product version.
+     * 
+     * @since 1.0.0
+     */
+    @Parameter(property = "swid.product_version", required = false, defaultValue = "${project.version}")
+    private String product_version;
+
+    /**
+     * Specifies software creator attributes.
+     * 
+     * <br/>
+     * <b>Fallback value(s):</b> name: <tt>${project.groupId}</tt>; regid: <tt>${project.url}, ${project.groupId}</tt><br/>
+     * <b>Default value(s):</b>
      * 
      * <pre>
      * &lt;software_creator&gt;
@@ -94,12 +114,15 @@ public class GenerateMojo extends AbstractSwidMojo {
      * 
      * @since 1.0.0
      */
-    @Parameter(property = "swid.software_creator", required = false)
+    @Parameter(required = false, defaultValue = "${software_creator}")
     private RegId software_creator;
 
     /**
-     * Specifies software licensor attributes. <br/>
-     * <b>Default values:</b>
+     * Specifies software licensor attributes.
+     * 
+     * <br/>
+     * <b>Fallback value(s):</b> name: <tt>${project.groupId}</tt>; regid: <tt>${project.url}, ${project.groupId}</tt><br/>
+     * <b>Default value(s):</b>
      * 
      * <pre>
      * &lt;software_licensor&gt;
@@ -110,28 +133,34 @@ public class GenerateMojo extends AbstractSwidMojo {
      * 
      * @since 1.0.0
      */
-    @Parameter(property = "swid.software_licensor", required = false)
+    @Parameter(required = false, defaultValue = "${software_licensor}")
     private RegId software_licensor;
 
     /**
-     * Specifies software identifier attributes. <br/>
-     * <b>Default values:</b>
+     * Specifies software identifier attributes.
+     * 
+     * <br/>
+     * <b>Fallback value(s):</b> tag_creator_regid: <tt>${project.url}, ${project.groupId}</tt><br/>
+     * <b>Default value(s):</b>
      * 
      * <pre>
      * &lt;software_id&gt;
-     *     &lt;unique_id&gt;${project.organization.name}&lt;/unique_id&gt;
+     *     &lt;unique_id&gt;${project.artifactId}&lt;/unique_id&gt;
      *     &lt;tag_creator_regid&gt;${project.organization.url}&lt;/tag_creator_regid&gt;
      * &lt;/software_id&gt;
      * </pre>
      * 
      * @since 1.0.0
      */
-    @Parameter(property = "swid.software_id", required = false)
+    @Parameter(required = false, defaultValue = "${software_id}")
     private RegId software_id;
 
     /**
-     * Specifies tag creator attributes. <br/>
-     * <b>Default values:</b>
+     * Specifies tag creator attributes.
+     * 
+     * <br/>
+     * <b>Fallback value(s):</b> name: <tt>${project.groupId}</tt>; regid: <tt>${project.url}, ${project.groupId}</tt><br/>
+     * <b>Default value(s):</b>
      * 
      * <pre>
      * &lt;tag_creator&gt;
@@ -142,38 +171,21 @@ public class GenerateMojo extends AbstractSwidMojo {
      * 
      * @since 1.0.0
      */
-    @Parameter(property = "swid.tag_creator", required = false)
+    @Parameter(required = false, defaultValue = "${tag_creator}")
     private RegId tag_creator;
 
     public void execute() throws MojoExecutionException {
         getLog().debug("Generate SWID Tag...");
 
-        File dir = outputDirectory;
-        if (!dir.exists()) {
-            dir.mkdirs();
-        }
-
-        final String regId = SwidUtils.generateRegId("2010-04", "com.labs64");
-        // Parse a version String and add the components to a properties object.
-        String projectVersion = getProject().getVersion();
-        if (ArtifactUtils.isSnapshot(projectVersion)) {
-            projectVersion = StringUtils.substring(projectVersion, 0, projectVersion.length()
-                    - Artifact.SNAPSHOT_VERSION.length() - 1);
-        }
-        ArtifactVersion artifactVersion = new DefaultArtifactVersion(projectVersion);
-
-        final String fileName = SwidUtils.generateSwidFileName(regId,
-                getProject().getArtifactId(),
-                projectVersion,
-                extension);
-        File touch = new File(dir, fileName);
+        // prepare mandatory elements
+        ArtifactVersion artifactVersion = getArtifactVersion();
+        prepareMandatoryElements();
 
         // prepare SWID Tag processor
         SwidProcessor processor = new DefaultSwidProcessor();
         ((DefaultSwidProcessor) processor).setEntitlementRequiredIndicator(entitlement_required)
                 .setProductTitle(product_title)
-                // TODO
-                .setProductVersion(projectVersion,
+                .setProductVersion(product_version,
                         artifactVersion.getMajorVersion(),
                         artifactVersion.getMinorVersion(),
                         artifactVersion.getIncrementalVersion(),
@@ -188,8 +200,106 @@ public class GenerateMojo extends AbstractSwidMojo {
         SoftwareIdentificationTagComplexType swidTag = builder.build(processor);
 
         // output resulting object
+        final String fileName = SwidUtils.generateSwidFileName(software_creator.getRegid(),
+                getProject().getArtifactId(),
+                product_version,
+                extension);
+        if (!outputDirectory.exists()) {
+            if (!outputDirectory.mkdirs()) {
+                throw new MojoExecutionException("Cannot create directory '" + outputDirectory.toString() + "'");
+            }
+        }
+        File swidFile = new File(outputDirectory, fileName);
         SwidWriter writer = new SwidWriter();
-        writer.write(swidTag, touch);
+        writer.write(swidTag, swidFile);
+    }
+
+    private ArtifactVersion getArtifactVersion() {
+        if (ArtifactUtils.isSnapshot(product_version)) {
+            product_version = StringUtils.substring(product_version, 0, product_version.length()
+                    - Artifact.SNAPSHOT_VERSION.length() - 1);
+        }
+        return new DefaultArtifactVersion(product_version);
+    }
+
+    /**
+     * Generate domain date in format <code>'yyyy-MM'</code>.
+     * 
+     * @param domainDate
+     *            the domain date
+     * @return generated domain date in format <code>'yyyy-MM'</code>; e.g. <code>'2010-04'</code>
+     * @deprecated wait for the next swid-generator version :: 0.3.0
+     */
+    private String generateDomainDate(final Date domainDate) {
+        if (domainDate == null) {
+            throw new SwidException("domainDate isn't defined");
+        }
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM");
+        return dateFormat.format(domainDate);
+    }
+
+    private RegId getDefaultRegId() {
+        final RegId regid = new RegId();
+
+        regid.setName(getProject().getOrganization() == null ?
+                getProject().getGroupId() : getProject().getOrganization().getName());
+
+        final String url = getProject().getOrganization() == null ?
+                getProject().getUrl() : getProject().getOrganization().getUrl();
+        final String reverseDomainName = StringUtils.isBlank(url) ?
+                getProject().getGroupId() : SwidUtils.revertDomainName(url);
+        regid.setRegid(SwidUtils.generateRegId(generateDomainDate(new Date()), reverseDomainName));
+
+        return regid;
+    }
+
+    private void prepareMandatoryElements() {
+        final RegId defaultRegId = getDefaultRegId();
+
+        // software_creator
+        if (software_creator == null) {
+            software_creator = new RegId();
+        }
+        if (StringUtils.isBlank(software_creator.getName())) {
+            software_creator.setName(defaultRegId.getName());
+        }
+        if (StringUtils.isBlank(software_creator.getRegid())) {
+            software_creator.setRegid(defaultRegId.getRegid());
+        }
+
+        // software_licensor
+        if (software_licensor == null) {
+            software_licensor = new RegId();
+        }
+        if (StringUtils.isBlank(software_licensor.getName())) {
+            software_licensor.setName(defaultRegId.getName());
+        }
+        if (StringUtils.isBlank(software_licensor.getRegid())) {
+            software_licensor.setRegid(defaultRegId.getRegid());
+        }
+
+        // tag_creator
+        if (tag_creator == null) {
+            tag_creator = new RegId();
+        }
+        if (StringUtils.isBlank(tag_creator.getName())) {
+            tag_creator.setName(defaultRegId.getName());
+        }
+        if (StringUtils.isBlank(tag_creator.getRegid())) {
+            tag_creator.setRegid(defaultRegId.getRegid());
+        }
+
+        // software_id
+        if (software_id == null) {
+            software_id = new RegId();
+        }
+        if (StringUtils.isBlank(software_id.getUnique_id())) {
+            software_id.setUnique_id(getProject().getArtifactId());
+        }
+        if (StringUtils.isBlank(software_id.getTag_creator_regid())) {
+            software_id.setTag_creator_regid(tag_creator.getRegid());
+        }
     }
 
 }

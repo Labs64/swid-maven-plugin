@@ -9,8 +9,6 @@
     <name>IT :: MOJO :: Generate - Name</name>
     <description>IT :: MOJO :: Generate - Description</description>
 
-    <url>http://www.labs64.com</url>
-
     <organization>
         <name>Labs64 GmbH</name>
         <url>http://www.labs64.com</url>
@@ -34,27 +32,28 @@
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <outputDirectory>${project.build.directory}/generated-resources/swid/com.labs64</outputDirectory>
-                            <encoding>UTF-8</encoding>
+                            <outputDirectory>${project.build.directory}/generated-resources/swid/com.labs64
+                            </outputDirectory>
+                            <encoding>ISO-8859-1</encoding>
                             <extension>xml</extension>
                             <entitlement_required>true</entitlement_required>
                             <product_title>${project.description}</product_title>
-                            <!-- TODO -->
+                            <product_version>1.2.3-SNAPSHOT</product_version>
                             <software_creator>
                                 <name>Labs64</name>
-                                <regid>reg.2010-04.com.labs64</regid>
+                                <regid>regid.2010-04.com.labs64</regid>
                             </software_creator>
                             <software_licensor>
                                 <name>Labs64</name>
-                                <regid>reg.2010-04.com.labs64</regid>
+                            <regid>regid.2010-04.com.labs64</regid>
                             </software_licensor>
                             <software_id>
                                 <unique_id>NLIC</unique_id>
-                                <tag_creator_regid>reg.2010-04.com.labs64</tag_creator_regid>
+                                <tag_creator_regid>regid.2010-04.com.labs64</tag_creator_regid>
                             </software_id>
                             <tag_creator>
                                 <name>Labs64</name>
-                                <regid>reg.2010-04.com.labs64</regid>
+                                <regid>regid.2010-04.com.labs64</regid>
                             </tag_creator>
                         </configuration>
                     </execution>

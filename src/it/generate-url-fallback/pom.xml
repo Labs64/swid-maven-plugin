@@ -8,10 +8,7 @@
     <version>@project.version@</version>
     <name>IT :: MOJO :: Generate</name>
 
-    <organization>
-        <name>Labs64 GmbH</name>
-        <url>http://www.labs64.com</url>
-    </organization>
+    <url>http://www.labs64.com</url>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -30,9 +27,6 @@
                         <goals>
                             <goal>generate</goal>
                         </goals>
-                        <configuration>
-                            <extension>swtag</extension>
-                        </configuration>
                     </execution>
                 </executions>
             </plugin>

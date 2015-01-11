@@ -56,11 +56,14 @@ under the License.
             <question>Where are SWID Tags located on a system?</question>
             <answer>
                 <p>
-                    The location of .swidtag tag files is platform specific:
+                    The location of
+                    <i>.swidtag</i>
+                    tag files is platform specific:
                     <ul>
                         <li>Windows XP: %ALLUSERSPROFILE%\Application Data\&lt;regid&gt;</li>
                         <li>Windows Vista &amp; Windows 7, 8: %PROGRAMDATA%\&lt;regid&gt;</li>
                         <li>Mac OS: /Library/Application Support/&lt;regid&gt;</li>
+                        <li>UNIX flavours and Linux: /usr/share/&lt;regid&gt;</li>
                     </ul>
                 </p>
             </answer>

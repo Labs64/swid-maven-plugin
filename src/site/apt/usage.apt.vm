@@ -28,7 +28,7 @@ Usage
 
   The common usage is to simply declare the plugin and its goals. The <<<process-resources>>> phase will be bound to by default.
 
--------------------
++-----
 <project>
   ...
   <build>
@@ -51,7 +51,7 @@ Usage
   </build>
   ...
 </project>
--------------------
++-----
 
   If you have problems using the plugin, please feel free to post your questions to the {{{./mail-lists.html}user mailing list}}.
 

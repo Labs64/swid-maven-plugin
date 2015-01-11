@@ -27,8 +27,8 @@
 Generate SWID Tags :: Custom Configuration Example
 
   This example shows how to configure the <<<generate>>> goal for basic usage.
-  
--------------------
+
++-----
 <project>
   ...
   <build>
@@ -44,7 +44,7 @@ Generate SWID Tags :: Custom Configuration Example
               <goal>generate</goal>
             </goals>
               <configuration>
-                  <outputDirectory>generated-resources/swid/com.labs64</outputDirectory>
+                  <outputDirectory>target/generated-resources/swid/com.labs64</outputDirectory>
                   <encoding>UTF-8</encoding>
                   <extension>xml</extension>
                   <entitlement_required>true</entitlement_required>
@@ -74,7 +74,7 @@ Generate SWID Tags :: Custom Configuration Example
   </build>
   ...
 </project>
--------------------
++-----
 
   For the <<<generate>>> goal, SWID Tags will by default be created in the directory 
   <<<target/generated-resources/swid>>>. This can be configured using the <<<outputDirectory>>> parameter.

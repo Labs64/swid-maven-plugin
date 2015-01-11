@@ -6,16 +6,6 @@
     <groupId>@project.groupId@.it</groupId>
     <artifactId>@project.artifactId@-it</artifactId>
     <version>@project.version@</version>
-    <name>IT :: MOJO :: Generate</name>
-
-    <organization>
-        <name>Labs64 GmbH</name>
-        <url>http://www.labs64.com</url>
-    </organization>
-
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
 
     <build>
         <plugins>
@@ -25,14 +15,9 @@
                 <version>@project.version@</version>
                 <executions>
                     <execution>
-                        <id>generate</id>
-                        <phase>process-resources</phase>
                         <goals>
                             <goal>generate</goal>
                         </goals>
-                        <configuration>
-                            <extension>swtag</extension>
-                        </configuration>
                     </execution>
                 </executions>
             </plugin>

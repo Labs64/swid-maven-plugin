@@ -30,8 +30,6 @@ under the License.
     </skin>
     <custom>
         <fluidoSkin>
-            <profile>pre-release</profile>
-
             <topBarEnabled>false</topBarEnabled>
             <sideBarEnabled>true</sideBarEnabled>
             <breadcrumbDivider>»</breadcrumbDivider>
