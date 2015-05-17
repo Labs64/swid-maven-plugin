@@ -78,10 +78,10 @@
         <repo.snapshots.url>OVERRIDE_REPO_URL</repo.snapshots.url>
 
         <!-- dependency.version>0.0.0</dependency.version -->
-        <maven-plugin-api.version>3.3.1</maven-plugin-api.version>
-        <maven-core.version>3.3.1</maven-core.version>
+        <maven-plugin-api.version>3.3.3</maven-plugin-api.version>
+        <maven-core.version>3.3.3</maven-core.version>
         <maven-plugin-annotations.version>3.4</maven-plugin-annotations.version>
-        <plexus-utils.version>3.0.21</plexus-utils.version>
+        <plexus-utils.version>3.0.22</plexus-utils.version>
         <plexus-resources.version>1.0.1</plexus-resources.version>
         <org.eclipse.egit.github.core.version>2.1.5</org.eclipse.egit.github.core.version>
         <swid-generator.version>0.3.0</swid-generator.version>
@@ -94,24 +94,24 @@
         <junit.version>4.12</junit.version>
 
         <!-- plugin.version>0.0.0</plugin.version -->
-        <maven-plugin-plugin.version>3.3</maven-plugin-plugin.version>
+        <maven-plugin-plugin.version>3.4</maven-plugin-plugin.version>
         <plexus-component-javadoc.version>1.6</plexus-component-javadoc.version>
-        <maven-invoker-plugin.version>1.9</maven-invoker-plugin.version>
-        <maven-enforcer-plugin.version>1.3.1</maven-enforcer-plugin.version>
-        <maven-compiler-plugin.version>3.2</maven-compiler-plugin.version>
-        <maven-release-plugin.version>2.5.1</maven-release-plugin.version>
+        <maven-invoker-plugin.version>1.10</maven-invoker-plugin.version>
+        <maven-enforcer-plugin.version>1.4</maven-enforcer-plugin.version>
+        <maven-compiler-plugin.version>3.3</maven-compiler-plugin.version>
+        <maven-release-plugin.version>2.5.2</maven-release-plugin.version>
         <nexus-staging-maven-plugin.version>1.6.4</nexus-staging-maven-plugin.version>
         <maven-source-plugin.version>2.4</maven-source-plugin.version>
-        <maven-javadoc-plugin.version>2.10.1</maven-javadoc-plugin.version>
+        <maven-javadoc-plugin.version>2.10.3</maven-javadoc-plugin.version>
         <maven-jxr-plugin.version>2.5</maven-jxr-plugin.version>
-        <maven-dependency-plugin.version>2.9</maven-dependency-plugin.version>
-        <maven-gpg-plugin.version>1.5</maven-gpg-plugin.version>
+        <maven-dependency-plugin.version>2.10</maven-dependency-plugin.version>
+        <maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
         <maven-jaxb2-plugin.version>0.12.3</maven-jaxb2-plugin.version>
         <build-helper-maven-plugin.version>1.9.1</build-helper-maven-plugin.version>
         <maven-resources-plugin.version>2.7</maven-resources-plugin.version>
-        <maven-jar-plugin.version>2.5</maven-jar-plugin.version>
+        <maven-jar-plugin.version>2.6</maven-jar-plugin.version>
         <maven-docck-plugin.version>1.0</maven-docck-plugin.version>
-        <site-maven-plugin.version>0.10</site-maven-plugin.version>
+        <site-maven-plugin.version>0.11</site-maven-plugin.version>
     </properties>
 
     <prerequisites>
