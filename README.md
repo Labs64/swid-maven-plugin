@@ -2,7 +2,6 @@
 
 [![Stories in Ready](https://badge.waffle.io/Labs64/swid-maven-plugin.svg?label=ready&title=Ready)](http://waffle.io/Labs64/swid-maven-plugin)
 [![Build Status](https://travis-ci.org/Labs64/swid-maven-plugin.svg)](https://travis-ci.org/Labs64/swid-maven-plugin)
-[![Dependency Status](https://www.versioneye.com/user/projects/54a1b8d614969a371200003d/badge.svg?style=flat)](https://www.versioneye.com/user/projects/54a1b8d614969a371200003d)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.labs64.mojo/swid-maven-plugin/badge.svg?style=flat)](https://maven-badges.herokuapp.com/maven-central/com.labs64.mojo/swid-maven-plugin)
 
 Generate SoftWare IDentification (SWID) Tags based on the Maven POM according to [ISO/IEC 19770-2:2009](http://www.iso.org/iso/home/store/catalogue_tc/catalogue_detail.htm?csnumber=53670)
