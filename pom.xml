@@ -77,6 +77,9 @@
         <repo.releases.url>OVERRIDE_REPO_URL</repo.releases.url>
         <repo.snapshots.url>OVERRIDE_REPO_URL</repo.snapshots.url>
 
+        <maven.compiler.plugin.source>6</maven.compiler.plugin.source>
+        <maven.compiler.plugin.target>6</maven.compiler.plugin.target>
+
         <!-- dependency.version>0.0.0</dependency.version -->
         <maven-plugin-api.version>3.3.9</maven-plugin-api.version>
         <maven-core.version>3.3.9</maven-core.version>
@@ -84,7 +87,7 @@
         <plexus-utils.version>3.0.24</plexus-utils.version>
         <plexus-resources.version>1.0.1</plexus-resources.version>
         <org.eclipse.egit.github.core.version>2.1.5</org.eclipse.egit.github.core.version>
-        <swid-generator.version>0.3.0</swid-generator.version>
+        <swid-generator.version>0.4.0-SNAPSHOT</swid-generator.version>
         <commons-lang3.version>3.3.2</commons-lang3.version>
         <commons-collections4.version>4.0</commons-collections4.version>
         <commons-codec.version>1.10</commons-codec.version>
@@ -94,24 +97,26 @@
         <junit.version>4.12</junit.version>
 
         <!-- plugin.version>0.0.0</plugin.version -->
-        <maven-plugin-plugin.version>3.3</maven-plugin-plugin.version>
+        <maven-plugin-plugin.version>3.6.0</maven-plugin-plugin.version>
         <plexus-component-javadoc.version>1.6</plexus-component-javadoc.version>
-        <maven-invoker-plugin.version>2.0.0</maven-invoker-plugin.version>
-        <maven-enforcer-plugin.version>1.4.1</maven-enforcer-plugin.version>
-        <maven-compiler-plugin.version>3.5.1</maven-compiler-plugin.version>
+        <maven-invoker-plugin.version>3.2.0</maven-invoker-plugin.version>
+        <maven-enforcer-plugin.version>3.0.0-M2</maven-enforcer-plugin.version>
+        <maven-compiler-plugin.version>3.7.0-jboss-1</maven-compiler-plugin.version>
         <maven-release-plugin.version>2.5.3</maven-release-plugin.version>
-        <nexus-staging-maven-plugin.version>1.6.5</nexus-staging-maven-plugin.version>
+        <nexus-staging-maven-plugin.version>1.6.8</nexus-staging-maven-plugin.version>
         <maven-source-plugin.version>3.0.1</maven-source-plugin.version>
         <maven-javadoc-plugin.version>2.10.4</maven-javadoc-plugin.version>
         <maven-jxr-plugin.version>2.5</maven-jxr-plugin.version>
-        <maven-dependency-plugin.version>2.10</maven-dependency-plugin.version>
+        <maven-dependency-plugin.version>3.1.1</maven-dependency-plugin.version>
         <maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
         <maven-jaxb2-plugin.version>0.12.3</maven-jaxb2-plugin.version>
-        <build-helper-maven-plugin.version>1.12</build-helper-maven-plugin.version>
-        <maven-resources-plugin.version>3.0.1</maven-resources-plugin.version>
-        <maven-jar-plugin.version>3.0.2</maven-jar-plugin.version>
+        <build-helper-maven-plugin.version>3.0.0</build-helper-maven-plugin.version>
+        <maven-resources-plugin.version>3.1.0</maven-resources-plugin.version>
+        <maven-jar-plugin.version>3.1.0</maven-jar-plugin.version>
         <maven-docck-plugin.version>1.0</maven-docck-plugin.version>
         <site-maven-plugin.version>0.12</site-maven-plugin.version>
+        <jaxb.version>2.3.0</jaxb.version>
+        <javax.activation.version>1.1.1</javax.activation.version>
     </properties>
 
     <prerequisites>
@@ -154,6 +159,27 @@
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
             <version>${commons-io.version}</version>
+        </dependency>
+        <!--Support JAXB in Java 9 +-->
+        <dependency>
+            <groupId>javax.xml.bind</groupId>
+            <artifactId>jaxb-api</artifactId>
+            <version>${jaxb.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.xml.bind</groupId>
+            <artifactId>jaxb-impl</artifactId>
+            <version>${jaxb.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.xml.bind</groupId>
+            <artifactId>jaxb-core</artifactId>
+            <version>${jaxb.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.activation</groupId>
+            <artifactId>activation</artifactId>
+            <version>${javax.activation.version}</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
@@ -241,8 +267,8 @@
                 <version>${maven-compiler-plugin.version}</version>
                 <configuration>
                     <encoding>utf-8</encoding>
-                    <source>${java.version}</source>
-                    <target>${java.version}</target>
+                    <source>${maven.compiler.plugin.source}</source>
+                    <target>${maven.compiler.plugin.target}</target>
                 </configuration>
             </plugin>
             <plugin>
