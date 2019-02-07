@@ -77,9 +77,6 @@
         <repo.releases.url>OVERRIDE_REPO_URL</repo.releases.url>
         <repo.snapshots.url>OVERRIDE_REPO_URL</repo.snapshots.url>
 
-        <maven.compiler.plugin.source>6</maven.compiler.plugin.source>
-        <maven.compiler.plugin.target>6</maven.compiler.plugin.target>
-
         <!-- dependency.version>0.0.0</dependency.version -->
         <maven-plugin-api.version>3.3.9</maven-plugin-api.version>
         <maven-core.version>3.3.9</maven-core.version>
@@ -267,8 +264,8 @@
                 <version>${maven-compiler-plugin.version}</version>
                 <configuration>
                     <encoding>utf-8</encoding>
-                    <source>${maven.compiler.plugin.source}</source>
-                    <target>${maven.compiler.plugin.target}</target>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
                 </configuration>
             </plugin>
             <plugin>
