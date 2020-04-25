@@ -4,8 +4,7 @@
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.labs64.mojo/swid-maven-plugin/badge.svg?style=flat)](https://maven-badges.herokuapp.com/maven-central/com.labs64.mojo/swid-maven-plugin)
 [![Apache License 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/Labs64/swid-maven-plugin/blob/master/LICENSE)
 
-
-Generate SoftWare IDentification (SWID) Tags based on the Maven POM according to [ISO/IEC 19770-2:2009](http://www.iso.org/iso/home/store/catalogue_tc/catalogue_detail.htm?csnumber=53670)
+[Generate SoftWare IDentification (SWID) Tags](https://github.com/Labs64/swid-generator/) based on the Maven POM according to [ISO/IEC 19770-2:2009](http://www.iso.org/iso/home/store/catalogue_tc/catalogue_detail.htm?csnumber=53670)
 
 ## What are SWID Tags?
 
@@ -28,7 +27,7 @@ Maven:
 
 ## Examples
 
-Please consult the [Examples](http://io.labs64.com/swid-maven-plugin/) section for information on how SWID Tags Generator plugin can be used.
+Please consult the [Examples](http://io.labs64.com/swid-maven-plugin/examples/generate-basic.html) section for information on how SWID Tags Generator plugin can be used.
 
 ## Compatibility
 
