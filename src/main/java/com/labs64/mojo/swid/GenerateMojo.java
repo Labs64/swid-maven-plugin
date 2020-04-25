@@ -25,13 +25,13 @@ import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugins.annotations.LifecyclePhase;
 import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
-import org.iso.standards.iso._19770.__2._2009.schema.SoftwareIdentificationTagComplexType;
+import org.iso.standards.iso._19770.__2._2014_dis.schema.SoftwareIdentity;
+import org.iso.standards.iso._19770.__2._2014_dis.schema.VersionScheme;
 
 import com.labs64.mojo.swid.configuration.RegId;
 import com.labs64.utils.swid.SwidBuilder;
 import com.labs64.utils.swid.io.SwidWriter;
 import com.labs64.utils.swid.processor.DefaultSwidProcessor;
-import com.labs64.utils.swid.processor.SwidProcessor;
 import com.labs64.utils.swid.support.SwidUtils;
 
 /**
@@ -191,22 +191,21 @@ public class GenerateMojo extends AbstractSwidMojo {
         prepareMandatoryElements();
 
         // prepare SWID Tag processor
-        SwidProcessor processor = new DefaultSwidProcessor();
-        ((DefaultSwidProcessor) processor).setEntitlementRequiredIndicator(entitlement_required)
-                .setProductTitle(product_title)
-                .setProductVersion(product_version,
-                        artifactVersion.getMajorVersion(),
-                        artifactVersion.getMinorVersion(),
-                        artifactVersion.getIncrementalVersion(),
-                        artifactVersion.getBuildNumber())
+        DefaultSwidProcessor processor = new DefaultSwidProcessor();
+        //processor.setEntitlementRequiredIndicator(entitlement_required)
+        processor.setName(product_title)
+        .setVersionScheme(VersionScheme.ALPHANUMERIC)
+                .setVersion(artifactVersion.getQualifier());
+                /** TODO: use new 2015 spec structure
                 .setSoftwareCreator(software_creator.getName(), software_creator.getRegid())
                 .setSoftwareLicensor(software_licensor.getName(), software_licensor.getRegid())
                 .setSoftwareId(software_id.getUnique_id(), software_id.getTag_creator_regid())
                 .setTagCreator(tag_creator.getName(), tag_creator.getRegid());
+                 */
 
         // create builder and pass processor as build param
         SwidBuilder builder = new SwidBuilder();
-        SoftwareIdentificationTagComplexType swidTag = builder.build(processor);
+        SoftwareIdentity swidTag = builder.build(processor);
 
         // output resulting object
         final String fileName = SwidUtils.generateSwidFileName(

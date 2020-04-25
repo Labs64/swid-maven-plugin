@@ -82,7 +82,8 @@ under the License.
         <menu ref="reports" />
         <menu name="External Links">
             <item name="SWID Tags Generator (Java Library)" href="http://l64.cc/swid" />
-            <item name="Labs64 NetLicensing" href="http://www.labs64.com/netlicensing/" />
+            <item name="Labs64 NetLicensing" href="https://netlicensing.io" />
+            <item name="GuideChimp" href="https://github.com/Labs64/GuideChimp" />
         </menu>
     </body>
 </project>

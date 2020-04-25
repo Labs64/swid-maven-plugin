@@ -16,11 +16,14 @@ target
 .idea
 *.iml
 
-# Eclipse #
+# Eclipse
 .classpath
 .project
 bin/**
 .settings/
+
+# VSCode
+.vscode
 
 # External tool builders
 .externalToolBuilders/

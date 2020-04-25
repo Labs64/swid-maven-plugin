@@ -4,11 +4,11 @@
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.labs64.mojo/swid-maven-plugin/badge.svg?style=flat)](https://maven-badges.herokuapp.com/maven-central/com.labs64.mojo/swid-maven-plugin)
 [![Apache License 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/Labs64/swid-maven-plugin/blob/master/LICENSE)
 
-[Generate SoftWare IDentification (SWID) Tags](https://github.com/Labs64/swid-generator/) based on the Maven POM according to [ISO/IEC 19770-2:2009](http://www.iso.org/iso/home/store/catalogue_tc/catalogue_detail.htm?csnumber=53670)
+[Generate SoftWare IDentification (SWID) Tags](https://github.com/Labs64/swid-generator/) based on the Maven POM according to [ISO/IEC 19770-2:2015](https://www.iso.org/standard/65666.html)
 
 ## What are SWID Tags?
 
-SoftWare IDentification (SWID) Tags record unique information about an installed software application, including its name, edition, version, whether it’s part of a bundle and more. SWID tags support software inventory and asset management initiatives. The structure of SWID tags is specified in international standard [ISO/IEC 19770-2:2009](http://www.iso.org/iso/home/store/catalogue_tc/catalogue_detail.htm?csnumber=53670).
+SoftWare IDentification (SWID) Tags record unique information about an installed software application, including its name, edition, version, whether it’s part of a bundle and more. SWID tags support software inventory and asset management initiatives. The structure of SWID tags is specified in international standard [ISO/IEC 19770-2:2015](https://www.iso.org/standard/65666.html).
 
 ## Quick Start
 

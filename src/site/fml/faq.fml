@@ -89,7 +89,7 @@ under the License.
                     provider for more info on their support.
                     <br />
                     Support for SoftWare IDentification (SWID) Tags in
-                    <a href="http://www.labs64.com/netlicensing/">Labs64 NetLicensing</a>
+                    <a href="https://netlicensing.io">Labs64 NetLicensing</a>
                     is planned.
                 </p>
             </answer>
@@ -105,7 +105,7 @@ under the License.
                         <li>Part 1 (ISO/IEC 19770-1:2012) outlines business processes for successful software asset
                             management.
                         </li>
-                        <li>Part 2 (ISO/IEC 19770-2:2009) outlines the structure for software identification tags, which
+                        <li>Part 2 (ISO/IEC 19770-2:2015) outlines the structure for software identification tags, which
                             can be used to improve the accuracy of software inventory collection as part of SAM.
                         </li>
                         <li>Part 3 (ISO/IEC 19770-3:20yy) will provide a software asset management data standard for
@@ -119,8 +119,8 @@ under the License.
             <question>Where can I get a complete copy of this standard?</question>
             <answer>
                 <p>
-                    A complete copy of the official ISO/IEC 19770-2:2009 standard can be purchased
-                    <a href="http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=53670"
+                    A complete copy of the official ISO/IEC 19770-2:2015 standard can be purchased
+                    <a href="https://www.iso.org/standard/65666.html"
                        target="_blank">here</a>&nbsp;&nbsp;or&nbsp;&nbsp;<a
                         href="http://webstore.iec.ch/webstore/webstore.nsf/ArtNum_Popup/43526!opendocument"
                         target="_blank">here</a>.
