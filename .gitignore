@@ -30,3 +30,4 @@ bin/**
 
 # Locally stored "Eclipse launch configurations"
 *.launch
+.factorypath
