@@ -32,8 +32,29 @@ Please consult the [Examples](http://io.labs64.com/swid-maven-plugin/) section f
 
 ## Compatibility
 
-This library requires J2SE 1.8 or never. All dependencies handled by Maven.
+This library requires J2SE 1.8 or newer. All dependencies handled by Maven.
 
 ## Links
 - Plugin website: http://io.labs64.com/swid-maven-plugin/
+- Spec: IT asset management — Part 2: Software Identification Tag: https://www.iso.org/standard/65666.html
 - SoftWare IDentification (SWID) Tags Generator (Java Library): https://github.com/Labs64/swid-generator/
+
+## Contributing
+
+Fork the repository and make some changes. Once you're done with your changes send a pull request and check [CI validation status](https://github.com/Labs64/swid-maven-plugin).
+Thanks!
+
+### Contributors and Supporters
+
+Thank you to all the [contributors](https://github.com/Labs64/swid-maven-plugin/graphs/contributors) on this project. Your help is much appreciated!
+
+- [GuideChimp](https://github.com/Labs64/GuideChimp) - A simple, lightweight, clean and small library for creating guided product tours for your web app.
+- [Labs64 NetLicensing](https://netlicensing.io) - A first-class solution in the Licensing-as-a-Service (LaaS) sector.
+
+## Bugs and Feedback
+
+For bugs, questions and discussions please use the [GitHub Issues](https://github.com/Labs64/swid-maven-plugin/issues).
+
+## License
+
+This plugin is open-sourced software licensed under the [Apache License 2.0](LICENSE).
