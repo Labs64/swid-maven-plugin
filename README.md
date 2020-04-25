@@ -41,7 +41,7 @@ This library requires J2SE 1.8 or newer. All dependencies handled by Maven.
 
 ## Contributing
 
-Fork the repository and make some changes. Once you're done with your changes send a pull request and check [CI validation status](https://github.com/Labs64/swid-maven-plugin).
+Fork the repository and make some changes. Once you're done with your changes send a pull request and check [CI validation status](https://travis-ci.org/Labs64/swid-maven-plugin).
 Thanks!
 
 ### Contributors and Supporters
@@ -49,7 +49,7 @@ Thanks!
 Thank you to all the [contributors](https://github.com/Labs64/swid-maven-plugin/graphs/contributors) on this project. Your help is much appreciated!
 
 - [GuideChimp](https://github.com/Labs64/GuideChimp) - A simple, lightweight, clean and small library for creating guided product tours for your web app.
-- [Labs64 NetLicensing](https://netlicensing.io) - A first-class solution in the Licensing-as-a-Service (LaaS) sector.
+- [Labs64 NetLicensing](https://netlicensing.io) - A first-class solution in the *Licensing-as-a-Service (LaaS)* sector.
 
 ## Bugs and Feedback
 
